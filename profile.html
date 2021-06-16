@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <img id="profile-picture" />
+    Bio: <span id="bio-area"></span>
+    <form id="profile-picture-form">
+      <input type="file" />
+      <input type="submit" value="Save Changes" />
+    </form>
+    <form id="bio-form">
+      <input type="text" id="bio" />
+      <input type="submit" value="Save Changes" />
+    </form>
+  </body>
+</html>
+<script src="./scripts/constants.js"></script>
+<script>
+  let user_id = localStorage.getItem('user_id');
+  let access_token = localStorage.getItem('access_token');
+  window.addEventListener('load', function () {
+    fetch(API_URL + 'api/profiles/' + user_id, {
+      method: 'GET',
+      headers: { authorization: access_token },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        document.querySelector('#bio-area').innerText =
+          res.user.shortDescription;
+        document
+          .querySelector('#profile-picture')
+          .setAttribute('src', res.user.picture.originalImage);
+      });
+  });
+
+  document
+    .getElementById('profile-picture-form')
+    .addEventListener('submit', (e) => {
+      e.preventDefault();
+      var input = document.querySelector('input[type="file"]');
+      var data = new FormData();
+      data.append('file', input.files[0]);
+
+      fetch(API_URL + 'api/profiles/' + user_id, {
+        method: 'POST',
+        headers: { authorization: access_token },
+        body: data,
+      });
+    });
+
+  document.getElementById('bio-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    let bio = document.querySelector('#bio').value;
+
+    fetch(API_URL + 'api/profiles/' + user_id, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: access_token,
+      },
+      body: JSON.stringify({ bio }),
+    });
+  });
+</script>
