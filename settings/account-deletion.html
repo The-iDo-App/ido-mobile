@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    Account Deletion
+    <button type="button" id="deleteAccount">Delete Account</button>
+  </body>
+</html>
+<script src="../scripts/constants.js"></script>
+<script>
+  let user_id = localStorage.getItem('user_id');
+  let access_token = localStorage.getItem('access_token');
+  document.querySelector('#deleteAccount').addEventListener('click', () => {
+    fetch(API_URL + 'api/settings/account-deletion/', {
+      method: 'POST',
+      headers: { authorization: access_token },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if(res.success) {
+          localStorage.clear();
+          location.href = '../index.html';
+        }
+      });
+  });
+</script>

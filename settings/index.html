@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  Settings
+  <a href="./personal-information.html">View Personal Information</a><br>
+  <a href="./blocked-users.html">See Blocked Users</a><br>
+  <hr>
+  <a href="./about.html">About</a><br>
+  <a href="./terms-and-conditions.html">Terms and Condition</a><br>
+  <a href="./guidelines.html">Guidelines</a><br>
+  <a href="./safety-tips.html">Safety Tips</a><br>
+  <hr>
+  <a href="#" id="logout">Logout</a><br>
+  <a href="./account-deletion.html">Delete Account</a><br>
+</body>
+</html>
+<script>
+  document.querySelector('#logout').addEventListener('click', () => {
+    localStorage.clear();
+    location.href = '../index.html';
+  })
+</script>

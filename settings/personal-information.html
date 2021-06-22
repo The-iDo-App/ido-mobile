@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    Personal Information
+    <br />
+    Username: <span id="username"></span>
+    <br />
+    Mobile: <span id="mobile"></span>
+    <br />
+    Gmail: <span id="gmail"></span>
+    <br />
+    Facebook: <span id="facebook"></span>
+  </body>
+</html>
+<script src="../scripts/constants.js"></script>
+<script>
+  let user_id = localStorage.getItem('user_id');
+  let access_token = localStorage.getItem('access_token');
+  window.addEventListener('load', function () {
+    fetch(API_URL + 'api/settings/personal-information/', {
+      method: 'GET',
+      headers: { authorization: access_token },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        const user = res.user;
+        document.querySelector('#username').innerText = user.username;
+        document.querySelector('#mobile').innerText = user.mobileNumber;
+        document.querySelector('#gmail').innerText = user.gmail;
+        document.querySelector('#facebook').innerText =
+          'facebook.com/' + user.facebookId;
+      });
+  });
+</script>
