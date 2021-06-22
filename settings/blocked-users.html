@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    Blocked Users
+    <div id="blockedUsers"></div>
+  </body>
+</html>
+<script src="../scripts/constants.js"></script>
+<script>
+  let user_id = localStorage.getItem('user_id');
+  let access_token = localStorage.getItem('access_token');
+  window.addEventListener('load', function () {
+    fetch(API_URL + 'api/settings/blocked-users/', {
+      method: 'GET',
+      headers: { authorization: access_token },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        const users = res.users;
+        console.log(users);
+        users.map((user) => {
+          let div = document.createElement('div');
+          let button = document.createElement('button');
+          button.innerText = 'Unblock';
+          button.addEventListener('click', () => {
+            fetch(API_URL + 'api/settings/blocked-users', {
+              method: 'DELETE',
+              headers: {
+                authorization: access_token,
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ user_id: user._id }),
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                location.href = './blocked-users.html';
+              });
+          });
+          div.innerText = user.username;
+          div.append(button);
+          document.querySelector('#blockedUsers').append(div);
+        });
+      });
+  });
+</script>
