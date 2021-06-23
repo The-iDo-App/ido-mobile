@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.box {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    width: 73.14px;
+    height: 74px;
+}
+
+hr {
+    color: rgba(137, 153, 168, 0.8);
+}
+
+.logo {
+    object-fit: contain;
+    width: 53px;
+    height: 42px;
+    margin: auto;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    display: block;
+}
