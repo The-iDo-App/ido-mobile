@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<htm lang="en-us">
+    <!--NAME, NICKNAME, PHOTO REGISTRATION-->
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!--font awesome script-->
+
+        <script src="https://kit.fontawesome.com/bcbd543404.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap cdn link-->
+        <!--Bootstrap script-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 " crossorigin="anonymous "></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js " integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p " crossorigin="anonymous "></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js " integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT " crossorigin="anonymous "></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <!--Material.io links-->
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+        <!--google fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="../css/registration.css">
+        <link rel="stylesheet" type="text/css" href="../css/step-1.css">
+        <meta name="viewport" media content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+        .container {
+            align-items: center;
+            width: 320px;
+            height: auto;
+        }
+        
+        .name-form {
+            width: 100%;
+            margin: auto;
+            position: relative;
+            top: 30px;
+        }
+        
+        .img-thumbnail {
+            width: 90px;
+            height: 100px;
+        }
+        
+        .mdc-text-field {
+            width: 130px;
+            position: relative;
+            top: 3px;
+            color: #1381a2 !important;
+            left: 2px;
+            height: 20px;
+            font-size: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .mdc-text-field--focused .mdc-floating-label {
+            color: #1381a2 !important;
+            font-size: 9px !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .mdc-text-field,
+        .mdc-text-field__input {
+            background-color: transparent;
+            color: #8999a8 !important;
+        }
+        
+        .mdc-text-field__input {
+            width: 100%;
+            color: #8999a8 !important;
+        }
+        
+        .userName {
+            top: 40px;
+            left: 0;
+            width: 275px;
+        }
+    </style>
+
+    <body>
+
+        <header>
+            <div class="box">
+                <img class="logo" src="../icons/Logo-whitebg.png">
+            </div>
+            <hr style="margin: 0; ">
+        </header>
+        <br>
+        <div class="container">
+            <h2 class="title">Let's set you up an account!</h2>
+            <p class="subtitle">Upload your photo or select with the available avatars.</p>
+            <!--Registration form step one:
+        1. Upload photo or pick an avatar
+        2. Fill up name and nickname
+        -->
+            <div class="photo-and-button">
+                <!--Profile pic circle-->
+                <div class="profilePic-box">
+                    <!--Profile pic img or avatar-->
+                    <img class="profilePic" id="profilePic" src="../avatars/Asset 156.png">
+                </div>
+
+                <!--trigger button to open modal-->
+                <button class="btn p-image" id="openModal" data-bs-toggle="modal" data-bs-target="#avatarModal">
+                <i class="fa fa-camera upload-button " style="font-size: 1.5em; z-index: 10; "></i>
+        </button>
+            </div>
+
+
+
+
+            <form class="name-form ">
+                <br>
+                <label class="name ">My name is</label>
+                <br>
+                <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
+                <span class="mdc-floating-label" id="my-label-id">First name</span>
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
+                </label>
+                <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
+                <span class="mdc-floating-label" id="my-label-id">Last name</span>
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
+                </label>
+                <br>
+                <label class="nickname ">You can call me</label>
+                <br>
+                <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1 userName" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
+                <span class="mdc-floating-label" id="my-label-id">Username</span>
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
+                </label>
+            </form>
+            <br>
+            <div class="group">
+                <a class="btn next" href='step-2.html'>Next</a>
+            </div>
+
+
+        </div>
+
+
+
+        <!--Modal of avatars-->
+        <div class="modal" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true" data-bs-backdrop="true">
+            <div class="modal-dialog  modal-sm"></div>
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="avatarModalLabel ">Choose your profile picture</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closebtn"></button>
+                </div>
+                <div class="modal-body ">
+                    <!--gallery-->
+                    <div class="container">
+                        <div class="gallery">
+                            <a href="#" class="link-gallery">
+                                <img src="../icons/gallery.png" class="img-thumbnail photo-gallery" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 156.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 157.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 158.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 159.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 160.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 161.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 162.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 163.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 164.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 165.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 166.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 167.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 168.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 169.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 170.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 171.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 172.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+                            <a href="#" class="link-pic">
+                                <img src="../avatars/Asset 173.png" class="img-thumbnail pic" style="object-fit: contain;">
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn discard" data-bs-dismiss="modal" aria-label="Close">Discard</button>
+                    <button class="btn save" data-bs-dismiss="modal" aria-label="Close" id="saveBtn">Save</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!--pagkaclick 
+
+variable js-->
+
+        <script>
+            let avatar;
+            this.saveBtn.addEventListener('click', function() {
+                document.getElementById('profilePic').setAttribute('src', avatar);
+            })
+            var avatars = document.getElementsByClassName('pic');
+            [...avatars].map(e => {
+                e.addEventListener('click', function() {
+                    avatar = e.src;
+                })
+            })
+
+            let elements = document.getElementsByClassName('mdc-text-field');
+            [...elements].map((e) => {
+                new mdc.textField.MDCTextField(e);
+            });
+        </script>
+
+    </body>
+
+    </html>
