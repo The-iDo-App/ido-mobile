@@ -12,11 +12,13 @@
     color: #8999a8;
     top: 60px;
     font-weight: 200;
+    font-size: 12px;
 }
 
 .link-page:hover,
 .link-page:focus {
     color: #1381a2;
+    text-decoration: none;
 }
 
 
@@ -63,4 +65,5 @@
 .nxt:hover {
     background-color: #eb667a;
     color: white;
+    outline: none;
 }

@@ -122,11 +122,11 @@
         margin: auto;
         height: 46px;
         text-decoration: none;
-        font-size: 14px;
+        font-size: 16px;
         vertical-align: middle;
         padding: 10px;
         position: relative;
-        top: 0;
+        top: 40px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -140,6 +140,7 @@
     .next:hover {
         background-color: #eb667a;
         color: white;
+        outline: none;
     }
     /* modal to select avatar or to upload photo*/
     
@@ -210,13 +211,16 @@
         color: white;
     }
     
-    .discard:hover {
+    .discard:hover,
+    .discard:focus {
         color: #D7AEB2;
+        outline: none;
     }
     
     .sav:focus,
     .save:hover {
         color: #1381a2;
+        outline: none;
     }
     /*div group*/
     
