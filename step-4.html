@@ -3,6 +3,9 @@
     <!--Sexuality-->
 
     <head>
+        <!--saving inputs-->
+        <script src="./scripts/save-var.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -19,8 +22,8 @@
         <!--google fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="../css/registration.css">
-        <link rel="stylesheet" type="text/css" href="../css/step-4.css">
+        <link rel="stylesheet" type="text/css" href="./css/registration.css">
+        <link rel="stylesheet" type="text/css" href="./css/step-4.css">
         <meta name="viewport" media content="width=device-width, initial-scale=1.0">
     </head>
     <style>
@@ -74,7 +77,7 @@
     <body>
         <header style="position: fixed; width: 100%; z-index: 100; background-color: white;">
             <div class="box">
-                <img class="logo" src="../icons/Logo-whitebg.png">
+                <img class="logo" src="./icons/Logo-whitebg.png">
             </div>
             <hr style="margin: 0;">
         </header>
@@ -85,12 +88,12 @@
                 <div class="container">
                     <div class="top-header">
                         <h2 class="title">I identify my sexuality as</h2>
-                        <p class="subtitle">You can choose at least three</p>
+                        <p class="subtitle">You can choose only one</p>
                     </div>
-                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset">
+                    <div class="mdc-chip-set mdc-chip-set--choice" role="grid" id="chipset">
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                             <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                             <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                              <span class="mdc-chip__text">Straight</span>
                             </span>
                             </span>
@@ -98,7 +101,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Gay</span>
                             </span>
                             </span>
@@ -106,7 +109,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Lesbian</span>
                             </span>
                             </span>
@@ -114,7 +117,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Bisexual</span>
                             </span>
                             </span>
@@ -122,7 +125,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Asexual</span>
                             </span>
                             </span>
@@ -130,7 +133,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Demisexual</span>
                             </span>
                             </span>
@@ -138,7 +141,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Pansexual</span>
                             </span>
                             </span>
@@ -146,7 +149,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Queer</span>
                             </span>
                             </span>
@@ -154,7 +157,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="orientation">
                             <span class="mdc-chip__text">Questioning</span>
                             </span>
                             </span>
@@ -163,7 +166,7 @@
 
                     </div>
 
-                    <button role="button" class="btn nxt shadow-none" onclick="window.location.href='step-5.html'">Next</button> </div>
+                    <button role="button" class="btn nxt shadow-none" onMouseUp="saveStep4()" id="step3">Next</button> </div>
                 </div>
 
                 <script>

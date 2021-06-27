@@ -4,6 +4,9 @@
     <!--preferences-1-->
 
     <head>
+        <!--saving inputs-->
+        <script src="./scripts/save-var.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -20,12 +23,12 @@
         <!--google fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="../css/registration.css">
-        <link rel="stylesheet" type="text/css" href="../css/preferences.css">
+        <link rel="stylesheet" type="text/css" href="./css/registration.css">
+        <link rel="stylesheet" type="text/css" href="./css/preferences.css">
         <meta name="viewport" media content="width=device-width, initial-scale=1.0">
     </head>
     <style>
-    .container {
+        .container {
             align-items: center;
             width: 320px;
         }
@@ -86,14 +89,13 @@
             position: relative;
             left: -0.8px;
         }
-    }
     </style>
 
     <body>
 
         <header>
             <div class="box">
-                <img class="logo" src="../icons/Logo-whitebg.png">
+                <img class="logo" src="./icons/Logo-whitebg.png">
             </div>
             <hr style="margin: 0; ">
         </header>
@@ -107,7 +109,7 @@
                     <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="genderPref">
                         <span class="mdc-chip__text">Men</span>
                             </span>
                             </span>
@@ -115,7 +117,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="genderPref">
                         <span class="mdc-chip__text">Women</span>
                             </span>
                             </span>
@@ -123,7 +125,7 @@
 
                         <div class="mdc-chip" role="row">
                             <span role="gridcell">
-                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="genderPref">
                         <span class="mdc-chip__text">Everyone</span>
                             </span>
                             </span>
@@ -138,8 +140,8 @@
                 <br>
 
                 <div class="mdc-slider mdc-slider--range mdc-slider--discrete">
-                    <input class="mdc-slider__input" type="range" min="18" max="60" value="18" step="1" name="rangeStart" aria-label="Range slider">
-                    <input class="mdc-slider__input" type="range" min="19" max="65" value="65" step="1" name="rangeEnd" aria-label="Range slider">
+                    <input class="mdc-slider__input" type="range" min="18" max="60" value="18" step="1" name="rangeStart" aria-label="Range slider" id="minAge">
+                    <input class="mdc-slider__input" type="range" min="19" max="65" value="65" step="1" name="rangeEnd" aria-label="Range slider" id="maxAge">
                     <div class="mdc-slider__track">
                         <div class="mdc-slider__track--inactive"></div>
                         <div class="mdc-slider__track--active">
@@ -171,8 +173,8 @@
                 <br>
 
                 <div class="mdc-slider distance mdc-slider--range mdc-slider--discrete">
-                    <input class="mdc-slider__input" type="range" min="0.5" max="10" value="1" step="0.5" name="rangeStart" aria-label="Range slider">
-                    <input class="mdc-slider__input" type="range" min="11" max="20" value="20" step="0.5" name="rangeEnd" aria-label="Range slider">
+                    <input class="mdc-slider__input" type="range" min="0.5" max="10" value="1" step="0.5" name="rangeStart" aria-label="Range slider" id="minDistance">
+                    <input class="mdc-slider__input" type="range" min="11" max="20" value="20" step="0.5" name="rangeEnd" aria-label="Range slider" id="maxDistance">
                     <div class="mdc-slider__track">
                         <div class="mdc-slider__track--inactive"></div>
                         <div class="mdc-slider__track--active">
@@ -202,7 +204,7 @@
             </div>
             <!---next button-->
 
-            <button role="button" class="btn nxt shadow-none" onclick="window.location.href='preferences-1.html'">Next</button> </div>
+            <button role="button" class="btn nxt shadow-none" onMouseUp="savePreference()" id="pref">Next</button> </div>
 
 
 

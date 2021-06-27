@@ -4,6 +4,9 @@
     <!--gender man or woman-->
 
     <head>
+        <!--saving inputs-->
+        <script src="./scripts/save-var.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -20,8 +23,8 @@
         <!--google fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="../css/registration.css">
-        <link rel="stylesheet" type="text/css" href="../css/step-6.css">
+        <link rel="stylesheet" type="text/css" href="./css/registration.css">
+        <link rel="stylesheet" type="text/css" href="./css/step-6.css">
         <meta name="viewport" media content="width=device-width, initial-scale=1.0">
     </head>
     <style>
@@ -81,12 +84,12 @@
     <body>
         <header style="position: fixed; width: 100%; z-index: 100; background-color: white;">
             <div class="box">
-                <img class="logo" src="../icons/Logo-whitebg.png">
+                <img class="logo" src="./icons/Logo-whitebg.png">
             </div>
             <hr style="margin: 0;">
         </header>
         <br>
-        <a href="step-2.html" class="link-page">
+        <a href="step-5.html" class="link-page">
             << Back </a>
                 <br>
                 <div class="container">
@@ -100,21 +103,21 @@
 
                             <div class="mdc-chip" role="row">
                                 <span role="gridcell">
-                             <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                             <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="employment">
                             <span class="mdc-chip__text">Employed</span>
                                 </span>
                                 </span>
                             </div>
                             <div class="mdc-chip" role="row">
                                 <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="employment">
                              <span class="mdc-chip__text">Unemployed</span>
                                 </span>
                                 </span>
                             </div>
                             <div class="mdc-chip" role="row">
                                 <span role="gridcell">
-                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="employment">
                              <span class="mdc-chip__text">Student</span>
                                 </span>
                                 </span>
@@ -144,7 +147,7 @@
                     </div>
 
 
-                    <button role="button" class="btn nxt shadow-none" onclick="window.location.href='preferences.html'">Next</button> </div>
+                    <button role="button" class="btn nxt shadow-none" onMouseUp="saveStep6()" id="step6">Next</button> </div>
                 </div>
 
                 <script>

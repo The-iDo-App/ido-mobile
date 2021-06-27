@@ -3,6 +3,8 @@
     <!--birthday-->
 
     <head>
+        <!--saving inputs-->
+        <script src="./scripts/save-var.js"></script>
 
         <!--font awesome script-->
         <script src="https://kit.fontawesome.com/bcbd543404.js" crossorigin="anonymous"></script>
@@ -22,8 +24,8 @@
         <!--google fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="../css/registration.css">
-        <link rel="stylesheet" type="text/css" href="../css/step-2.css">
+        <link rel="stylesheet" type="text/css" href="./css/registration.css">
+        <link rel="stylesheet" type="text/css" href="./css/step-2.css">
         <meta name="viewport" media content="width=device-width, initial-scale=1.0">
     </head>
     <style>
@@ -72,7 +74,7 @@
     <body>
         <header style="position: fixed; width: 100%; z-index: 100; background-color: white;">
             <div class="box">
-                <img class="logo" src="../icons/Logo-whitebg.png">
+                <img class="logo" src="./icons/Logo-whitebg.png">
             </div>
             <hr style="margin: 0;">
         </header>
@@ -88,12 +90,12 @@
                     <br>
                     <div class="group">
                         <div id="datepicker" class="input-group date" date-date="12-31-2003" data-date-format="mm-dd-yyyy">
-                            <input class="form-control" type="text" value="MM-DD-YYYY" readonly />
+                            <input class="form-control" type="text" value="MM-DD-YYYY" id="birthday" readonly />
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                         </div>
                     </div>
 
-                    <button role="button" class="btn nxt shadow-none" onclick="window.location.href='step-3.html'">Next</button>
+                    <button role="button" class="btn nxt shadow-none" onMouseUp="saveStep2()" id="step2">Next</button>
                 </div>
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

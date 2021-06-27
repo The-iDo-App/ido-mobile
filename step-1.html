@@ -3,6 +3,9 @@
     <!--NAME, NICKNAME, PHOTO REGISTRATION-->
 
     <head>
+        <!--saving inputs-->
+        <script src="./scripts/save-var.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -19,8 +22,8 @@
         <!--google fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="../css/registration.css">
-        <link rel="stylesheet" type="text/css" href="../css/step-1.css">
+        <link rel="stylesheet" type="text/css" href="./css/registration.css">
+        <link rel="stylesheet" type="text/css" href="./css/step-1.css">
         <meta name="viewport" media content="width=device-width, initial-scale=1.0">
     </head>
     <style>
@@ -86,7 +89,7 @@
 
         <header>
             <div class="box">
-                <img class="logo" src="../icons/Logo-whitebg.png">
+                <img class="logo" src="./icons/Logo-whitebg.png">
             </div>
             <hr style="margin: 0; ">
         </header>
@@ -102,7 +105,7 @@
                 <!--Profile pic circle-->
                 <div class="profilePic-box">
                     <!--Profile pic img or avatar-->
-                    <img class="profilePic" id="profilePic" src="../avatars/Asset 156.png">
+                    <img class="profilePic" id="profilePic" src="./avatars/Asset 156.png">
                 </div>
 
                 <!--trigger button to open modal-->
@@ -120,12 +123,12 @@
                 <br>
                 <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
                 <span class="mdc-floating-label" id="my-label-id">First name</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id='firstName'>
                 <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
                 </label>
                 <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
                 <span class="mdc-floating-label" id="my-label-id">Last name</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="lastName">
                 <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
                 </label>
                 <br><br>
@@ -133,13 +136,13 @@
                 <br>
                 <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1 userName" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
                 <span class="mdc-floating-label" id="my-label-id">Username</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="username">
                 <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
                 </label>
             </form>
             <br>
             <div class="group">
-                <a class="btn next shadow-none" href='step-2.html'>Next</a>
+                <a class="btn next shadow-none" onMouseUp="saveStep1()" id="step1">Next</a>
             </div>
 
 
@@ -160,61 +163,61 @@
                     <div class="container">
                         <div class="gallery">
                             <a href="#" class="link-gallery">
-                                <img src="../icons/gallery.png" class="img-thumbnail photo-gallery" style="object-fit: contain;">
+                                <img src="./icons/gallery.png" class="img-thumbnail photo-gallery" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 156.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 156.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 157.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 157.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 158.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 158.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 159.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 159.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 160.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 160.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 161.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 161.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 162.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 162.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 163.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 163.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 164.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 164.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 165.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 165.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 166.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 166.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 167.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 167.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 168.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 168.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 169.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 169.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 170.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 170.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 171.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 171.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 172.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 172.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
                             <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 173.png" class="img-thumbnail pic" style="object-fit: contain;">
+                                <img src="./avatars/Asset 173.png" class="img-thumbnail pic" style="object-fit: contain;">
                             </a>
 
                         </div>
