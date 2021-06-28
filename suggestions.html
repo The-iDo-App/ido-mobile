@@ -15,6 +15,26 @@
     />
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <style>
+.debug {
+  border: red solid 1px;
+}
+.modal-image {
+  width: 30vw;
+  border-radius: 30vw;
+}
+      .rating {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border-radius: 40px;
+        background-color: #ff6e83;
+        color: white;
+        width: 40px;
+        height: 40px;
+      }
+      .bg-danger {
+        background-color: #ff6e83 !important;
+      }
       html,
       body {
         width: 100%;
@@ -82,6 +102,7 @@
         position: relative;
         top: -10px;
       }
+
       * {
         margin: 0;
         padding: 0;
@@ -251,16 +272,8 @@
           class="mdc-dialog__surface"
           role="alertdialog"
           aria-modal="true"
-          aria-labelledby="my-dialog-title"
-          aria-describedby="my-dialog-content"
         >
-          <div class="mdc-dialog__content" id="my-dialog-content">
-            <h2>User Profile</h2>
-            Amet reprehenderit laudantium earum nemo totam, veritatis
-            Accusantium neque quis dolorum placeat ullam. Reprehenderit hic sed
-            odio recusandae rem Sapiente nisi laboriosam dolorum rerum
-            voluptatem Sed perferendis fugiat assumenda natus.
-          </div>
+          <div class="mdc-dialog__content" id="swipe-up-modal"></div>
         </div>
       </div>
       <div class="mdc-dialog__scrim"></div>
@@ -397,6 +410,7 @@
               this.push();
               this.handle();
             } else if (e.direction === Hammer.DIRECTION_UP) {
+              document.getElementById('swipe-up-modal').innerHTML = this.topCard.getAttribute('data');
               dialog.open();
               this.topCard.style.transform =
                 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)';
@@ -418,13 +432,80 @@
       if (users.length) {
         console.log(users);
         let card = document.createElement('div');
+        let data = `
+<div class="d-flex justify-content-between">
+  <img src="${users[0].picture.blurredImage}" alt="" class="modal-image">
+  <div class="text-center flex-grow-1 justify-content-center align-self-center">
+    <div>${users[0].username}</div>
+  </div>
+</div>
+<hr>
+<div class="overflow-auto" style="max-height: 40vh">`;
+        let fields = [
+  "astrologicalSign",
+  "religion",
+  "politicalView",
+  "smoke",
+  "wantKids",
+  "wantMarried",
+  "sports",
+  "hobbies",
+  "musicGenre",
+  "movieGenre",
+  "pets",
+  "books",
+  "food", 
+  "drinks",
+]
+let names = {
+  "astrologicalSign": "Astrological Sign?",
+  "religion": "Religion?",
+  "politicalView": "Political View?",
+  "smoke": "Smoke?",
+  "wantKids": "Want to Have Kids?",
+  "wantMarried": "Want to be Married?",
+  "sports": "Sports?",
+  "hobbies": "Hobbies?",
+  "musicGenre": "Music Genres?",
+  "movieGenre": "Movies and TV Genres?",
+  "pets": "Pets?",
+  "books": "Books?",
+  "food": "Food?", 
+  "drinks": "Drinks?",
+}
+for(let i = 0; i < fields.length; i++){
+  let value = users[0].interest[fields[i]];
+  value = typeof value !== 'object' ? [value] : value;
+  data += `<small class="text-muted">${names[fields[i]]}</small><br>`
+  for(let j = 0; j < value.length; j++) {
+    data += `<span class="badge rounded-pill bg-danger">${value[j]}</span>&nbsp;`
+  }
+  data += '<hr>'
+}
+        data+='</div>';
+        card.setAttribute('data', data)
         card.classList.add('card');
         let img = document.createElement('img');
         img.classList.add('card-img-top');
-        img.setAttribute('src', users[0]?.picture.originalImage);
+        img.setAttribute('src', users[0]?.picture.blurredImage);
         let body = document.createElement('div');
         body.classList.add('card-body');
-        body.innerHTML = `<div class="card-title"><span class="h4">${users[0]?.username}, </span><span style="color: gray">${users[0].age}</span></div><p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>`;
+        body.innerHTML = `
+<div class="rating d-flex text-center">
+  <div class="mx-auto justify-content-center align-self-center">${ users[0].matchRate }</div>
+</div>
+<div class="card-title d-flex justify-content-between">
+  <div>
+    <span class="h4">${users[0]?.username}, </span>
+    <span class="text-muted">${users[0].age}</span>
+  </div>
+  <div>${users[0].location.distance} km</div>
+</div>
+<p class="card-text">
+  <span class="text-muted">${users[0].location.city}</span>
+  <hr>
+  <span class="text-muted">${users[0].shortDescription}</span>
+</p>`;
         card.append(img);
         card.append(body);
         this.board.insertBefore(card, this.board.firstChild);
@@ -433,10 +514,10 @@
     }
   }
 
-  let users;
+  let users, dialog;
   const app = async () => {
     let board = document.querySelector('#board');
-    let dialog = new mdc.dialog.MDCDialog(
+    dialog = new mdc.dialog.MDCDialog(
       document.querySelector('.mdc-dialog')
     );
 
@@ -444,7 +525,7 @@
       headers: {
         authorization:
           localStorage.getItem('access_token') ||
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiIiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIiLCJsb25naXR1ZGUiOiIifSwibW9iaWxlTnVtYmVyIjoiMDkxMjM0NTY3ODkiLCJmYWNlYm9va0lkIjoiIiwiZ21haWwiOiIiLCJzZXgiOiIiLCJzaG93QWN0aXZlU3RhdHVzIjp0cnVlLCJhY3RpdmVTdGF0dXMiOiJvbmxpbmUiLCJ2ZXJpZmljYXRpb25TdGF0dXMiOiJ1bnZlcmlmaWVkIiwiZW1wbG95bWVudCI6IiIsImJsb2NrZWRVc2VycyI6W10sImxlZnRDb252ZXJzYXRpb25zIjpbXSwiX2lkIjoiNjBkOWVmZDRjYmE0ZTA5YzQ2YzcyYzcwIiwidXNlcm5hbWUiOiJyYXVsMTkiLCJmaXJzdE5hbWUiOiJSYXVsIiwibGFzdE5hbWUiOiJEaWV0cmljaCIsIm9yaWVudGF0aW9uIjoiU3RyYWlnaHQgKG1hbGUpIiwiYmlydGhkYXkiOiIxOTk1LTA0LTE5VDAyOjUxOjQzLjQ2NVoiLCJfX3YiOjAsImlhdCI6MTYyNDg5NTQ0NH0.XkOmO1cv-WTApC4BUToHwV-SS1F6TQWx4R5QxmiSdN8',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIiLCJsb25naXR1ZGUiOiIifSwibW9iaWxlTnVtYmVyIjoiMDkxMjM0NTY3ODkiLCJmYWNlYm9va0lkIjoiIiwiZ21haWwiOiIiLCJzZXgiOiIiLCJzaG93QWN0aXZlU3RhdHVzIjp0cnVlLCJhY3RpdmVTdGF0dXMiOiJvbmxpbmUiLCJ2ZXJpZmljYXRpb25TdGF0dXMiOiJ1bnZlcmlmaWVkIiwiZW1wbG95bWVudCI6IiIsImJsb2NrZWRVc2VycyI6W10sImxlZnRDb252ZXJzYXRpb25zIjpbXSwiX2lkIjoiNjBkYTFhOWIyYTJhMTJkNTA4NzRmNDI5IiwidXNlcm5hbWUiOiJvbmEzMSIsImZpcnN0TmFtZSI6Ik9uYSIsImxhc3ROYW1lIjoiSGVzc2VsIiwib3JpZW50YXRpb24iOiJTdHJhaWdodCAobWFsZSkiLCJiaXJ0aGRheSI6IjIwNTEtMDctMzBUMjA6NTk6NTkuNjQwWiIsIl9fdiI6MCwiaWF0IjoxNjI0OTA2Mzk1fQ.IFkyIYYECxDAwXzTfG8nq1B7982N7UdgZuS_OXPamz8',
       },
     });
 
