@@ -28,7 +28,6 @@
         height: 100%;
         position: relative;
         overflow: hidden;
-        background-color: rgb(245, 247, 250);
       }
 
       .card {
@@ -36,7 +35,7 @@
         top: 50%;
         left: 50%;
         width: 90%;
-        height: 80%;
+        height: 75%;
         border-radius: 1%;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
         background-color: white;
@@ -47,99 +46,197 @@
         transform: translateX(-54%) translateY(-54%) scale(0.95);
       }
 
+      .card-img-top {
+        max-height: 80% !important;
+        width: auto !important;
+      }
+      .container {
+        max-width: 100%;
+        position: relative;
+        top: 32px;
+        margin: auto;
+        margin-bottom: 200px;
+      }
+
       .mdc-tab-bar {
         --mdc-theme-primary: #ff6e83;
+        box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.17);
+        height: 70px;
       }
+
       .mdc-tab__content img {
-        height: inherit;
+        height: 120%;
       }
+
       .mdc-tab--active img {
         filter: invert(61%) sepia(29%) saturate(3367%) hue-rotate(311deg)
           brightness(103%) contrast(101%);
       }
 
-      .card-img-top {
-        max-height: 80% !important;
-        width: auto !important;
+      .mdc-ripple-upgraded--background-focused,
+      .mdc-text-field {
+        background-color: white !important;
+      }
+
+      .mdc-tab-icon {
+        position: relative;
+        top: -10px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: white;
+        overflow-x: hidden;
+      }
+
+      .box {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        left: 0;
+        width: 73.14px;
+        height: 74px;
+      }
+
+      hr {
+        color: rgba(137, 153, 168, 0.8);
+        width: 100%;
+        position: relative;
+        bottom: 0;
+      }
+
+      .logo {
+        object-fit: contain;
+        width: 53px;
+        height: 42px;
+        margin: auto;
+        position: absolute;
+        top: 4px;
+        left: 0;
+        right: 0;
+        bottom: 4px;
+        display: block;
       }
     </style>
   </head>
 
   <body class="mdc-typography">
+    <header
+      style="
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+        background-color: white;
+      "
+    >
+      <div class="box">
+        <img class="logo" src="../icons/Logo-whitebg.png" />
+      </div>
+      <hr style="margin: 0;" />
+    </header>
     <div id="board"></div>
     <div
       class="mdc-tab-bar"
       role="tablist"
-      style="position: absolute; bottom: 0; left: 0;"
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        background-color: white;
+      "
     >
       <div class="mdc-tab-scroller">
-        <div class="mdc-tab-scroller__scroll-area" style="overflow-y: hidden;">
+        <div
+          class="mdc-tab-scroller__scroll-area mdc-tab-scroll-area--scroll"
+          style="overflow-y: hidden; margin-bottom: 0;"
+        >
           <div class="mdc-tab-scroller__scroll-content">
+            <!--Matchmaking-->
             <button
-              class="mdc-tab mdc-tab--active"
+              id="mdc-tab-1"
+              class="mdc-tab mdc-tab--active mdc-ripple-upgraded"
               role="tab"
               aria-selected="true"
               tabindex="0"
             >
               <span class="mdc-tab__content">
-                <span class="mdc-tab__icon" aria-hidden="true"
-                  ><img src="./match-icon.png" alt=""
-                /></span>
+                <span class="mdc-tab__icon" aria-hidden="true">
+                  <img src="../icons/match.png" />
+                </span>
               </span>
-              <span class="mdc-tab-indicator mdc-tab-indicator--active">
-                <span
-                  class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"
-                ></span>
-              </span>
-            </button>
-            <button
-              class="mdc-tab"
-              role="tab"
-              aria-selected="true"
-              tabindex="0"
-            >
-              <span class="mdc-tab__content">
-                <span class="mdc-tab__icon" aria-hidden="true"
-                  ><img src="./chat-icon.png" alt=""
-                /></span>
-              </span>
+
               <span class="mdc-tab-indicator">
                 <span
                   class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"
+                  style="border-color: transparent !important;"
                 ></span>
               </span>
             </button>
+            <!--Messaging-->
             <button
-              class="mdc-tab"
+              id="mdc-tab-2"
+              class="mdc-tab mdc-ripple-upgraded"
               role="tab"
               aria-selected="true"
               tabindex="0"
             >
               <span class="mdc-tab__content">
-                <span class="mdc-tab__icon" aria-hidden="true"
-                  ><img src="./profile-icon.png" alt=""
-                /></span>
+                <span class="mdc-tab__icon" aria-hidden="true">
+                  <img src="../icons/message.png" />
+                </span>
               </span>
+
               <span class="mdc-tab-indicator">
                 <span
                   class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"
+                  style="border-color: transparent !important;"
                 ></span>
               </span>
             </button>
+            <!--Profile-->
             <button
-              class="mdc-tab"
+              id="mdc-tab-3"
+              class="mdc-tab mdc-ripple-upgraded"
               role="tab"
               aria-selected="true"
               tabindex="0"
             >
               <span class="mdc-tab__content">
-                <span class="mdc-tab__icon" aria-hidden="true"
-                  ><img src="./settings-icon.png" alt=""
-                /></span>
+                <span class="mdc-tab__icon" aria-hidden="true">
+                  <img src="../icons/profile.png" />
+                </span>
               </span>
+
               <span class="mdc-tab-indicator">
                 <span
                   class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"
+                  style="border-color: transparent !important;"
+                ></span>
+              </span>
+            </button>
+            <!--Settings-->
+            <button
+              id="mdc-tab-4"
+              class="mdc-tab mdc-ripple-upgraded"
+              role="tab"
+              aria-selected="true"
+              tabindex="0"
+            >
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__icon" aria-hidden="true">
+                  <img src="../icons/settings.png" />
+                </span>
+              </span>
+
+              <span class="mdc-tab-indicator">
+                <span
+                  class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"
+                  style="border-color: transparent !important;"
                 ></span>
               </span>
             </button>
@@ -147,6 +244,7 @@
         </div>
       </div>
     </div>
+
     <div class="mdc-dialog">
       <div class="mdc-dialog__container">
         <div
