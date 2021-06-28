@@ -107,6 +107,7 @@ function saveStep6() {
         }
         console.log(employment);
         localStorage.setItem('employment', employment);
+        // saveToUserDb();
         location.href = './preferences.html'
     });
 
@@ -263,6 +264,71 @@ function savePreference2() {
         localStorage.setItem('books', books);
         localStorage.setItem('food', food);
 
-        // location.href = './profile.html'
+        location.href = './profile.html'
     });
+
+}
+
+async function saveToDb() {
+    //USER
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+    const username = localStorage.getItem('username');
+    const birthday = localStorage.getItem('birthday');
+    const sex = localStorage.getItem('sex');
+    const orientation = localStorage.getItem('orientation');
+    const address = localStorage.getItem('address');
+    const employment = localStorage.getItem('employment');
+
+    //INTEREST
+    const astrologicalSign = localStorage.getItem('astrologicalSign');
+    const politicalView = localStorage.getItem('politicalView');
+    const religion = localStorage.getItem('religion');
+    const drink = localStorage.getItem('drink');
+    const smoke = localStorage.getItem('smoke');
+    const wantKids = localStorage.getItem('wantKids');
+    // const wantMarried = localStorage.getItem('wantMarried');
+    const sports = localStorage.getItem('sports');
+    const hobbies = localStorage.getItem('hobbies');
+    const musicGenre = localStorage.getItem('musicGenre');
+    const movieGenre = localStorage.getItem('movieGenre');
+    const pets = localStorage.getItem('pets');
+    const books = localStorage.getItem('books');
+    const food = localStorage.getItem('food');
+
+    const response = await fetch('/api/registers/createAccount', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            //User
+            firstName,
+            lastName,
+            username,
+            birthday,
+            sex,
+            orientation,
+            address,
+            employment,
+
+            //Interests
+            astrologicalSign,
+            politicalView,
+            religion,
+            drink,
+            smoke,
+            wantKids,
+            sports,
+            hobbies,
+            musicGenre,
+            movieGenre,
+            pets,
+            books,
+            food,
+        })
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
 }
