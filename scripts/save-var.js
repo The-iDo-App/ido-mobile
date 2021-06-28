@@ -1,60 +1,94 @@
-function saveStep1() {
-    var anch = document.getElementById('step1');
-    anch.addEventListener("click", (e) => {
+if (document.getElementById('form1') != null) {
+    var form = document.getElementById('form1');
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        var firstName = document.getElementById('firstName').value;
-        var lastName = document.getElementById('lastName').value;
-        var username = document.getElementById('username').value;
-        localStorage.setItem('firstName', firstName);
-        localStorage.setItem('lastName', lastName);
-        localStorage.setItem('username', username);
-
-        location.href = './step-2.html'
+        isValid = form.checkValidity();
+        form.reportValidity();
+        console.log(isValid);
+        if (isValid) {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var username = document.getElementById('username').value;
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('username', username);
+            location.href = './step-2.html'
+        }
     });
 }
 
-function saveStep2() {
-    var but = document.getElementById('step2');
-    but.addEventListener("click", (e) => {
+if (document.getElementById('form2') != null) {
+    var form = document.getElementById('form2');
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        var birthday = document.getElementById('birthday').value;
-        localStorage.setItem('birthday', birthday);
-
-        location.href = './step-3.html'
+        isValid = form.checkValidity();
+        form.reportValidity();
+        console.log(isValid);
+        if (isValid) {
+            var birthday = document.getElementById('birthday').value;
+            localStorage.setItem('birthday', birthday);
+            location.href = './step-3.html';
+        }
     });
 }
 
-function saveStep3() {
-    var but = document.getElementById('step3');
-    but.addEventListener("click", (e) => {
+if (document.getElementById('form3') != null) {
+    var form = document.getElementById('form3');
+    var item = document.getElementsByName('sex');
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        var sex;
-        var item = document.getElementsByName('sex');
+        var checked;
         for (var i = 0; i < item.length; i++) {
             if (item[i].ariaChecked == 'true')
-                sex = item[i].innerText;
+                checked = true;
         }
-        console.log(sex);
-        localStorage.setItem('sex', sex);
-        location.href = './step-4.html'
+        isValid = true;
+        if (!checked && form.checkValidity())
+            isValid = false;
+        form.reportValidity();
+
+        if (isValid) {
+            var sex;
+            for (var i = 0; i < item.length; i++) {
+                if (item[i].ariaChecked == 'true')
+                    sex = item[i].innerText;
+            }
+            localStorage.setItem('sex', sex);
+            location.href = './step-4.html';
+        } else {
+            alert('Select at least one');
+        }
     });
 }
 
-
-function saveStep4() {
-    var but = document.getElementById('step3');
-    but.addEventListener("click", (e) => {
+if (document.getElementById('form4') != null) {
+    var form = document.getElementById('form4');
+    var item = document.getElementsByName('orientation');
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        var orientation;
-        var item = document.getElementsByName('orientation');
+        var checked;
         for (var i = 0; i < item.length; i++) {
             if (item[i].ariaChecked == 'true')
-                orientation = item[i].innerText;
+                checked = true;
         }
-        console.log(orientation);
-        localStorage.setItem('orientation', orientation);
-        location.href = './step-5.html'
+        isValid = true;
+        if (!checked && form.checkValidity())
+            isValid = false;
+        form.reportValidity();
+
+        if (isValid) {
+            var orientation;
+            for (var i = 0; i < item.length; i++) {
+                if (item[i].ariaChecked == 'true')
+                    orientation = item[i].innerText;
+            }
+            localStorage.setItem('orientation', orientation);
+            location.href = './step-5.html';
+        } else {
+            alert('Select at least one');
+        }
     });
+
 }
 
 function getAddress() {
@@ -80,20 +114,18 @@ function getAddress() {
     reverseGeocoder.localityLanguage = 'en';
 
 }
-
-function saveStep5() {
-    var but = document.getElementById('step5');
-    but.addEventListener("click", (e) => {
+if (document.getElementById('form5') != null) {
+    var form = document.getElementById('form5');
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        // var checkInputNull = document.getElementById('addressBar').value.trim();
-        // if (checkInputNull) {
-        //     console.log('white')
-        // } else {
-        //     //Alert, enable location
-        // }
-        location.href = './step-6.html'
+        isValid = form.checkValidity();
+        form.reportValidity();
+        if (isValid) {
+            location.href = './step-6.html'
+        }
     });
 }
+
 
 function saveStep6() {
     var but = document.getElementById('step6');
@@ -161,13 +193,6 @@ function savePreference1() {
         for (var i = 0; i < item2.length; i++) {
             if (item2[i].ariaChecked == 'true')
                 politicalView = item2[i].innerText;
-        }
-
-        var drink;
-        var item3 = document.getElementsByName('drink');
-        for (var i = 0; i < item3.length; i++) {
-            if (item3[i].ariaChecked == 'true')
-                drink = item3[i].innerText;
         }
 
         var smoke;
@@ -256,6 +281,13 @@ function savePreference2() {
                 food += item7[i].firstElementChild.innerText + ",";
         }
 
+        // var drink = "";
+        // var item8 = document.getElementsByName('drink');
+        // for (var i = 0; i < item8.length; i++) {
+        //     if (item8[i].attributes[2].value == 'true')
+        //         drink += item8[i].firstElementChild.innerText + ",";
+        // }
+
         localStorage.setItem('sports', sports);
         localStorage.setItem('hobbies', hobbies);
         localStorage.setItem('musicGenre', musicGenre);
@@ -284,7 +316,6 @@ async function saveToDb() {
     const astrologicalSign = localStorage.getItem('astrologicalSign');
     const politicalView = localStorage.getItem('politicalView');
     const religion = localStorage.getItem('religion');
-    const drink = localStorage.getItem('drink');
     const smoke = localStorage.getItem('smoke');
     const wantKids = localStorage.getItem('wantKids');
     // const wantMarried = localStorage.getItem('wantMarried');
@@ -295,6 +326,7 @@ async function saveToDb() {
     const pets = localStorage.getItem('pets');
     const books = localStorage.getItem('books');
     const food = localStorage.getItem('food');
+    // const drink = localStorage.getItem('drink');
 
     const response = await fetch('/api/registers/createAccount', {
         method: 'POST',
@@ -316,7 +348,7 @@ async function saveToDb() {
             astrologicalSign,
             politicalView,
             religion,
-            drink,
+            // drink,
             smoke,
             wantKids,
             sports,

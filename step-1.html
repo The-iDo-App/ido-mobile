@@ -3,9 +3,6 @@
     <!--NAME, NICKNAME, PHOTO REGISTRATION-->
 
     <head>
-        <!--saving inputs-->
-        <script src="./scripts/save-var.js"></script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -114,21 +111,18 @@
         </button>
             </div>
 
-
-
-
-            <form class="name-form ">
+            <form class="name-form" id="form1">
                 <br>
                 <label class="name ">My name is</label>
                 <br>
                 <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
                 <span class="mdc-floating-label" id="my-label-id">First name</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id='firstName'>
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id='firstName' required>
                 <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
                 </label>
                 <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
                 <span class="mdc-floating-label" id="my-label-id">Last name</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="lastName">
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="lastName" required>
                 <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
                 </label>
                 <br><br>
@@ -136,19 +130,17 @@
                 <br>
                 <label class="mdc-text-field mdc-text-field--outlined mdc-ripple-upgraded mx-1 userName" style="--mdc-ripple-fg-size:128px; --mdc-ripple-fg-scale:1.80932; --mdc-ripple-fg-translate-start:-13.6px, -38.2px; --mdc-ripple-fg-translate-end:43.2px, -36px;">
                 <span class="mdc-floating-label" id="my-label-id">Username</span>
-                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="username">
+                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="username" required>
                 <span class="mdc-line-ripple" style="transform-origin: 34px center;"></span>
                 </label>
+                <br>
+                <div class="group">
+                    <button type="submit" class="btn next shadow-none">Next</button>
+                </div>
             </form>
-            <br>
-            <div class="group">
-                <a class="btn next shadow-none" onMouseUp="saveStep1()" id="step1">Next</a>
-            </div>
-
-
         </div>
-
-
+        <!--saving inputs-->
+        <script src="./scripts/save-var.js"></script>
 
         <!--Modal of avatars-->
         <div class="modal" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true" data-bs-backdrop="true">

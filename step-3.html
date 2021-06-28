@@ -3,9 +3,6 @@
     <!--gender man or woman-->
 
     <head>
-        <!--saving inputs-->
-        <script src="./scripts/save-var.js"></script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -85,34 +82,38 @@
         <a href="step-2.html" class="link-page">
             << Back </a>
                 <br>
-                <div class="container">
-                    <div class="top-header">
-                        <h2 class="title">I am a</h3>
-                            <p class="subtitle">You can choose only one</p>
-                    </div>
-                    <br>
-                    <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
-                        <div class="mdc-chip" role="row">
-                            <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sex">
-                                <span class="mdc-chip__text">Man</span>
-                            </span>
-                            </span>
-                        </div>
-
-                        <div class="mdc-chip" role="row">
-                            <span role="gridcell">
-                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sex">
-                        <span class="mdc-chip__text">Woman</span>
-                            </span>
-                            </span>
+                <form id="form3">
+                    <div class="container">
+                        <div class="top-header">
+                            <h2 class="title">I am a</h3>
+                                <p class="subtitle">You can choose only one</p>
                         </div>
                         <br>
+                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sex">
+                                <span class="mdc-chip__text">Man</span>
+                                </span>
+                                </span>
+                            </div>
 
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                    <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sex">
+                        <span class="mdc-chip__text">Woman</span>
+                                </span>
+                                </span>
+                            </div>
+                            <br>
+
+                        </div>
+
+                        <button role="button" class="btn nxt shadow-none" type="submit">Next</button> </div>
                     </div>
-
-                    <button role="button" class="btn nxt shadow-none" onMouseUp="saveStep3()" id="step3">Next</button> </div>
-                </div>
+                    <!--saving inputs-->
+                    <script src="./scripts/save-var.js"></script>
+                </form>
 
                 <script>
                     //chips: man and woman

@@ -3,9 +3,6 @@
     <!--birthday-->
 
     <head>
-        <!--saving inputs-->
-        <script src="./scripts/save-var.js"></script>
-
         <!--font awesome script-->
         <script src="https://kit.fontawesome.com/bcbd543404.js" crossorigin="anonymous"></script>
         <!-- Bootstrap cdn link-->
@@ -82,21 +79,24 @@
         <a href="step-1.html" class="link-page">
             << Back </a>
                 <br>
-                <div class="container">
-                    <div class="top-header">
-                        <h3 class="title">My birthday is on</h3>
-                        <p class="subtitle">Make sure you are 18 and above to register to this app.</p>
-                    </div>
-                    <br>
-                    <div class="group">
-                        <div id="datepicker" class="input-group date" date-date="12-31-2003" data-date-format="mm-dd-yyyy">
-                            <input class="form-control" type="text" value="MM-DD-YYYY" id="birthday" readonly />
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <form id="form2">
+                    <div class="container">
+                        <div class="top-header">
+                            <h3 class="title">My birthday is on</h3>
+                            <p class="subtitle">Make sure you are 18 and above to register to this app.</p>
                         </div>
+                        <br>
+                        <div class="group">
+                            <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                <input class="form-control" type="text" placeholder="MM-DD-YYYY" id="birthday" required aria-required="true">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </div>
+                        <button type="submit" role="button" class="btn nxt shadow-none">Next</button>
                     </div>
-
-                    <button role="button" class="btn nxt shadow-none" onMouseUp="saveStep2()" id="step2">Next</button>
-                </div>
+                    <!--saving inputs-->
+                    <script src="./scripts/save-var.js"></script>
+                </form>
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
