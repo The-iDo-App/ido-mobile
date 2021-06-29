@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!--interests-->
+
+<head>
+    <!--saving inputs-->
+    <script src="../scripts/save-var.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--font awesome script-->
+
+    <script src="https://kit.fontawesome.com/bcbd543404.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap cdn link-->
+    <!--Bootstrap script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js " integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js " integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT " crossorigin="anonymous "></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!--Material.io links-->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!--google fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/registration.css">
+    <link rel="stylesheet" type="text/css" href="../css/preferences-2.css">
+    <meta name="viewport" media content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    .container {
+        width: 320px;
+        height: auto;
+        position: relative;
+        top: 65px;
+        margin-bottom: 200px;
+    }
+    
+    .accordion {
+        width: 100%;
+        margin: auto;
+        position: relative;
+        top: 10px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+    
+    .accordion-item {
+        margin-top: 2px;
+        margin-bottom: 4px;
+    }
+    
+    .accordion-button {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.01em;
+        color: #8999a8;
+    }
+    
+    .accordion-button:not(.collapsed) {
+        color: #8999a8;
+        background-color: transparent;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125)
+    }
+    
+    .mdc-chip {
+        background-color: #8999a8;
+        color: white;
+    }
+    
+    .mdc-chip:hover {
+        background-color: #ff6e83 !important;
+        color: white;
+    }
+    
+    .mdc-chip--selected {
+        background-color: #ff6e83 !important;
+    }
+    
+    .mdc-chip--selected .mdc-chip__text {
+        color: white;
+    }
+</style>
+
+<body>
+    <header style="position: fixed; width: 100%; z-index: 100; background-color: white;">
+        <div class="box">
+            <img class="logo" src="../icons/Logo-whitebg.png">
+        </div>
+        <hr style="margin: 0;">
+    </header>
+    <br>
+    <a href="preferences-1.html" class="link-page">
+        << Back </a>
+            <br>
+            <div class="container">
+                <div class="top-header">
+                    <h3 class="title">Choose your interests!</h3>
+                    <p class="subtitle">Choose at least five interests in each sections</p>
+                </div>
+                <div class="group">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <!--Sports interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Sports</label>
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Choose some sports that interests you
+                             </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under sports interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset1">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Baseball</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Basketball</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Cricket</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Football</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Golf</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Gymnastics</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Hockey</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Martial Arts</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Swimming</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Table tennis</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Tennis</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="sports">
+                                        <span class="mdc-chip__text">Volleyball</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Hobbies interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Hobbies</label>
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Choose some hobbies that interests you
+                        </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under hobbies interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset2">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Arts and crafts</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Cooking</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Exercising</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Fishing</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Gaming</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Gardening</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Hiking</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Music</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Reading</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Traveling</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Watching TV</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="hobbies">
+                                        <span class="mdc-chip__text">Yoga</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Music genre interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Music genre</label>
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                               Choose some music genres that interests you
+                            </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under music genre interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset3">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Classical</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Country</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Electronic Dance Music (EDM)</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Hiphop</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Indie rock</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Jazz</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">J-pop</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">K-pop</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Metal</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Classic 80's, 90's music</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Original Pinoy Music (OPM)</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Pop</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Rap</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Rhythm & Blues (R&B)</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Rock</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="musicGenre">
+                                        <span class="mdc-chip__text">Techno</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Movies and TV Genres interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Movies and TV genres</label>
+                            <h2 class="accordion-header" id="flush-headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                            Choose some movies and TV genres  that interests you
+                        </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under movies and tv genres interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset4">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Action</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Adventure</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Animation</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Comedy</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Crime and mystery</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Fantasy</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Historical</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Horror</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Romance</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Satire</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Science fiction</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Cyberpunk and derivatives</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Speculative</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Thriller</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="movieGenre">
+                                        <span class="mdc-chip__text">Western</span>
+                                            </span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Pets interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Pets</label>
+                            <h2 class="accordion-header" id="flush-headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                             Choose pets that you love
+                            </button>
+                            </h2>
+                            <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under pet interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset5">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Amphibians</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Birds</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Cats</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Dogs</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Ferrets</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Fish</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Guinea pigs</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Hamsters</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Horses</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Rats and mice</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="pets">
+                                        <span class="mdc-chip__text">Reptiles</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Books interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Books</label>
+                            <h2 class="accordion-header" id="flush-headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                            Choose some books that interests you
+                        </button>
+                            </h2>
+                            <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under books interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset6">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Contemporary</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Dystopian</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Fantasy</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Manga</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Mystery</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Romance</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Sci-Fi</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Thriller</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="books">
+                                        <span class="mdc-chip__text">Westerns</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Foods interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Foods</label>
+                            <h2 class="accordion-header" id="flush-headingSeven">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                              Choose the foods that you love
+                            </button>
+                            </h2>
+                            <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under food interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset7">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Street foods</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Filipino dishes</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Korean dishes</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Fastfoods</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Pastry</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Pasta</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Milktea</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Chinese cuisine</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="food">
+                                        <span class="mdc-chip__text">Japanese cuisine</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Drinks interest-->
+                        <div class="accordion-item">
+                            <label class="interestTitle">Drinks</label>
+                            <h2 class="accordion-header" id="flush-headingEight">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+                              Choose the drinks that you like
+                            </button>
+                            </h2>
+                            <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <!--chips under food interests-->
+                                    <div class="mdc-chip-set mdc-chip-set--filter" role="grid" id="chipset8">
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Milk</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Coffee</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Chocolate</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Tea</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Mixed Fruit</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Juice</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Energy Drink</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Softdrinks</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Beer</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Wine</span>
+                                            </span>
+                                            </span>
+                                        </div>
+                                        <div class="mdc-chip" role="row">
+                                            <span role="gridcell">
+                                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="drinks">
+                                        <span class="mdc-chip__text">Others</span>
+                                            </span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button role="button" class="btn nxt shadow-none" onMouseUp="savePreference2()" id="pref2">Next</button> </div>
+            </div>
+
+            <script>
+                //chipset 1 --sports
+                let max = 5;
+                let chipset1 = new mdc.chips.MDCChipSet(document.querySelector('#chipset1'));
+                let elements = document.querySelectorAll('#chipset1 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset1.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+
+                //chipset 2 --hobbies
+                let chipset2 = new mdc.chips.MDCChipSet(document.querySelector('#chipset2'));
+                elements = document.querySelectorAll('#chipset2 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset2.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+
+                //chipset 3 --music
+                let chipset3 = new mdc.chips.MDCChipSet(document.querySelector('#chipset3'));
+                elements = document.querySelectorAll('#chipset3 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset3.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+
+                //chipset 4 --movies and tv
+                let chipset4 = new mdc.chips.MDCChipSet(document.querySelector('#chipset4'));
+                elements = document.querySelectorAll('#chipset4 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset4.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+
+                //chipset 5--pets
+                let chipset5 = new mdc.chips.MDCChipSet(document.querySelector('#chipset5'));
+                elements = document.querySelectorAll('#chipset5 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset5.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+
+                //chipset 6 --books
+                let chipset6 = new mdc.chips.MDCChipSet(document.querySelector('#chipset6'));
+                elements = document.querySelectorAll('#chipset6 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset6.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+
+                //chipset 7 --foods
+                let chipset7 = new mdc.chips.MDCChipSet(document.querySelector('#chipset7'));
+                elements = document.querySelectorAll('#chipset7 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset7.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+
+                //chipset 8 -- drinks
+                let chipset8 = new mdc.chips.MDCChipSet(document.querySelector('#chipset8'));
+                elements = document.querySelectorAll('#chipset8 .mdc-chip');
+                [...elements].map((e) => {
+                    e.addEventListener('click', function() {
+                        if (chipset8.chips.filter((chip) => chip.selected).length > max) {
+                            this.classList.remove('mdc-chip--selected');
+                        }
+                    });
+                });
+            </script>
+</body>
+
+</html>

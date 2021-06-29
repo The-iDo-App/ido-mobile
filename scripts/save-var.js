@@ -39,7 +39,7 @@ if (document.getElementById('form3') != null) {
         e.preventDefault();
         var checked;
         for (var i = 0; i < item.length; i++) {
-            if (item[i].ariaChecked == 'true')
+            if (item[i].attributes[2].value == 'true')
                 checked = true;
         }
         isValid = true;
@@ -50,7 +50,7 @@ if (document.getElementById('form3') != null) {
         if (isValid) {
             var sex;
             for (var i = 0; i < item.length; i++) {
-                if (item[i].ariaChecked == 'true')
+                if (item[i].attributes[2].value == 'true')
                     sex = item[i].innerText;
             }
             localStorage.setItem('sex', sex);
@@ -68,7 +68,7 @@ if (document.getElementById('form4') != null) {
         e.preventDefault();
         var checked;
         for (var i = 0; i < item.length; i++) {
-            if (item[i].ariaChecked == 'true')
+            if (item[i].attributes[2].value == 'true')
                 checked = true;
         }
         isValid = true;
@@ -79,7 +79,7 @@ if (document.getElementById('form4') != null) {
         if (isValid) {
             var orientation;
             for (var i = 0; i < item.length; i++) {
-                if (item[i].ariaChecked == 'true')
+                if (item[i].attributes[2].value == 'true')
                     orientation = item[i].innerText;
             }
             localStorage.setItem('orientation', orientation);
@@ -134,7 +134,7 @@ function saveStep6() {
         var employment;
         var item = document.getElementsByName('employment');
         for (var i = 0; i < item.length; i++) {
-            if (item[i].ariaChecked == 'true')
+            if (item[i].attributes[2].value == 'true')
                 employment = item[i].innerText;
         }
         console.log(employment);
@@ -152,7 +152,7 @@ function savePreference() {
         var genderPref;
         var item = document.getElementsByName('genderPref');
         for (var i = 0; i < item.length; i++) {
-            if (item[i].ariaChecked == 'true')
+            if (item[i].attributes[2].value == 'true')
                 genderPref = item[i].innerText;
         }
         var minAge = document.getElementById('minAge').value;
@@ -177,52 +177,51 @@ function savePreference1() {
         var astrologicalSign;
         var item = document.getElementsByName('astrologicalSign');
         for (var i = 0; i < item.length; i++) {
-            if (item[i].ariaChecked == 'true')
-                astrologicalSign = item[i].innerText;
+            if (item[i].attributes[2].value == 'true')
+                astrologicalSign = item[i].innerText.trim();
         }
 
         var religion;
         var item1 = document.getElementsByName('religion');
         for (var i = 0; i < item1.length; i++) {
-            if (item1[i].ariaChecked == 'true')
-                religion = item1[i].innerText;
+            if (item1[i].attributes[2].value == 'true')
+                religion = item1[i].innerText.trim();
         }
 
         var politicalView;
         var item2 = document.getElementsByName('politicalView');
         for (var i = 0; i < item2.length; i++) {
-            if (item2[i].ariaChecked == 'true')
-                politicalView = item2[i].innerText;
+            if (item2[i].attributes[2].value == 'true')
+                politicalView = item2[i].innerText.trim();
         }
 
         var smoke;
         var item4 = document.getElementsByName('smoke');
         for (var i = 0; i < item4.length; i++) {
-            if (item4[i].ariaChecked == 'true')
-                smoke = item4[i].innerText;
+            if (item4[i].attributes[2].value == 'true')
+                smoke = item4[i].innerText.trim();
         }
 
         var wantKids;
         var item5 = document.getElementsByName('wantKids');
         for (var i = 0; i < item5.length; i++) {
-            if (item5[i].ariaChecked == 'true')
-                wantKids = item5[i].innerText;
+            if (item5[i].attributes[2].value == 'true')
+                wantKids = item5[i].innerText.trim();
         }
 
-        // var wantMarried;
-        // var item6 = document.getElementsByName('wantMarried');
-        // for (var i = 0; i < item6.length; i++) {
-        //     if (item6[i].ariaChecked == 'true')
-        //         wantMarried = item6[i].innerText;
-        // }
+        var wantMarried;
+        var item6 = document.getElementsByName('wantMarried');
+        for (var i = 0; i < item6.length; i++) {
+            if (item6[i].attributes[2].value == 'true')
+                wantMarried = item6[i].innerText.trim();
+        }
 
         localStorage.setItem('astrologicalSign', astrologicalSign);
         localStorage.setItem('politicalView', politicalView);
         localStorage.setItem('religion', religion);
-        localStorage.setItem('drink', drink);
         localStorage.setItem('smoke', smoke);
         localStorage.setItem('wantKids', wantKids);
-        // localStorage.setItem('wantMarried', wantMarried);
+        localStorage.setItem('wantMarried', wantMarried);
 
         location.href = './preferences-2.html';
     });
@@ -281,12 +280,12 @@ function savePreference2() {
                 food += item7[i].firstElementChild.innerText + ",";
         }
 
-        // var drink = "";
-        // var item8 = document.getElementsByName('drink');
-        // for (var i = 0; i < item8.length; i++) {
-        //     if (item8[i].attributes[2].value == 'true')
-        //         drink += item8[i].firstElementChild.innerText + ",";
-        // }
+        var drinks = "";
+        var item8 = document.getElementsByName('drinks');
+        for (var i = 0; i < item8.length; i++) {
+            if (item8[i].attributes[2].value == 'true')
+                drinks += item8[i].firstElementChild.innerText + ",";
+        }
 
         localStorage.setItem('sports', sports);
         localStorage.setItem('hobbies', hobbies);
@@ -295,8 +294,10 @@ function savePreference2() {
         localStorage.setItem('pets', pets);
         localStorage.setItem('books', books);
         localStorage.setItem('food', food);
+        localStorage.setItem('drinks', drinks);
 
-        location.href = './profile.html'
+        saveToDb();
+        location.href = './questions.html';
     });
 
 }
@@ -313,12 +314,17 @@ async function saveToDb() {
     const employment = localStorage.getItem('employment');
 
     //INTEREST
+    const genderPref = localStorage.getItem('genderPref');
+    const minAge = localStorage.getItem('minAge');
+    const maxAge = localStorage.getItem('maxAge');
+    const minDistance = localStorage.getItem('minDistance');
+    const maxDistance = localStorage.getItem('maxDistance');
     const astrologicalSign = localStorage.getItem('astrologicalSign');
     const politicalView = localStorage.getItem('politicalView');
     const religion = localStorage.getItem('religion');
     const smoke = localStorage.getItem('smoke');
     const wantKids = localStorage.getItem('wantKids');
-    // const wantMarried = localStorage.getItem('wantMarried');
+    const wantMarried = localStorage.getItem('wantMarried');
     const sports = localStorage.getItem('sports');
     const hobbies = localStorage.getItem('hobbies');
     const musicGenre = localStorage.getItem('musicGenre');
@@ -326,15 +332,15 @@ async function saveToDb() {
     const pets = localStorage.getItem('pets');
     const books = localStorage.getItem('books');
     const food = localStorage.getItem('food');
-    // const drink = localStorage.getItem('drink');
+    const drinks = localStorage.getItem('drinks');
 
-    const response = await fetch('/api/registers/createAccount', {
+    const response = await fetch('http://localhost:5000/api/registers/createAccount', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            //User
+            //user
             firstName,
             lastName,
             username,
@@ -344,13 +350,18 @@ async function saveToDb() {
             address,
             employment,
 
-            //Interests
+            //interest
+            genderPref,
+            minAge,
+            maxAge,
+            minDistance,
+            maxDistance,
             astrologicalSign,
             politicalView,
             religion,
-            // drink,
             smoke,
             wantKids,
+            wantMarried,
             sports,
             hobbies,
             musicGenre,
@@ -358,6 +369,7 @@ async function saveToDb() {
             pets,
             books,
             food,
+            drinks,
         })
     });
     const data = await response.json();
