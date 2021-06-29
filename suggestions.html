@@ -15,13 +15,13 @@
     />
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <style>
-.debug {
-  border: red solid 1px;
-}
-.modal-image {
-  width: 30vw;
-  border-radius: 30vw;
-}
+      .debug {
+        border: red solid 1px;
+      }
+      .modal-image {
+        width: 30vw;
+        border-radius: 30vw;
+      }
       .rating {
         position: absolute;
         top: 20px;
@@ -268,11 +268,7 @@
 
     <div class="mdc-dialog">
       <div class="mdc-dialog__container">
-        <div
-          class="mdc-dialog__surface"
-          role="alertdialog"
-          aria-modal="true"
-        >
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true">
           <div class="mdc-dialog__content" id="swipe-up-modal"></div>
         </div>
       </div>
@@ -281,7 +277,12 @@
   </body>
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="./scripts/constants.js"></script>
 <script>
+  const access_token =
+    localStorage.getItem('access_token') ||
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIxNC40MjEwNjMzODI2MjAwNTUiLCJsb25naXR1ZGUiOiIxMjEuNzQ1OTUyNDgwODQxMDEifSwibW9iaWxlTnVtYmVyIjoiMDkxMjM0NTY3ODkiLCJmYWNlYm9va0lkIjoiIiwiZ21haWwiOiIiLCJzZXgiOiIiLCJzaG93QWN0aXZlU3RhdHVzIjp0cnVlLCJhY3RpdmVTdGF0dXMiOiJvbmxpbmUiLCJ2ZXJpZmljYXRpb25TdGF0dXMiOiJ1bnZlcmlmaWVkIiwiZW1wbG95bWVudCI6IiIsImJsb2NrZWRVc2VycyI6W10sImxlZnRDb252ZXJzYXRpb25zIjpbXSwiX2lkIjoiNjBkYTNlZGQ3MzI5ODRmZjhiYmFhNDQzIiwidXNlcm5hbWUiOiJsZW5uaWUyNyIsImZpcnN0TmFtZSI6Ikxlbm5pZSIsImxhc3ROYW1lIjoiRmFkZWwiLCJvcmllbnRhdGlvbiI6IlN0cmFpZ2h0IChtYWxlKSIsImJpcnRoZGF5IjoiMjA4My0xMS0yN1QwNTowODo1My4yMDFaIiwiX192IjowLCJpYXQiOjE2MjQ5MTU2Nzd9.hXrf4HoLW7lGH-hyXGJ4qXcpSR3Er8UP6TIBvSSMyIc';
+
   new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
   class Carousel {
     constructor(element) {
@@ -404,13 +405,24 @@
             deg +
             'deg)';
 
+          if (e.direction === Hammer.DIRECTION_RIGHT) {
+            fetch(
+              API_URL +
+                'api/suggestions/' +
+                this.topCard.getAttribute('userId'),
+              { method: 'POST', headers: { authorization: access_token } }
+            );
+          }
+
           setTimeout(() => {
             if (e.direction !== Hammer.DIRECTION_UP) {
               this.board.removeChild(this.topCard);
               this.push();
               this.handle();
             } else if (e.direction === Hammer.DIRECTION_UP) {
-              document.getElementById('swipe-up-modal').innerHTML = this.topCard.getAttribute('data');
+              document.getElementById(
+                'swipe-up-modal'
+              ).innerHTML = this.topCard.getAttribute('data');
               dialog.open();
               this.topCard.style.transform =
                 'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)';
@@ -433,57 +445,58 @@
         console.log(users);
         let card = document.createElement('div');
         let data = `
-<div class="d-flex justify-content-between">
-  <img src="${users[0].picture.blurredImage}" alt="" class="modal-image">
-  <div class="text-center flex-grow-1 justify-content-center align-self-center">
-    <div>${users[0].username}</div>
+  <div class="d-flex justify-content-between">
+    <img src="${users[0].picture.blurredImage}" alt="" class="modal-image">
+    <div class="text-center flex-grow-1 justify-content-center align-self-center">
+      <div>${users[0].username}</div>
+    </div>
   </div>
-</div>
-<hr>
-<div class="overflow-auto" style="max-height: 40vh">`;
+  <hr>
+  <div class="overflow-auto" style="max-height: 40vh">`;
         let fields = [
-  "astrologicalSign",
-  "religion",
-  "politicalView",
-  "smoke",
-  "wantKids",
-  "wantMarried",
-  "sports",
-  "hobbies",
-  "musicGenre",
-  "movieGenre",
-  "pets",
-  "books",
-  "food", 
-  "drinks",
-]
-let names = {
-  "astrologicalSign": "Astrological Sign?",
-  "religion": "Religion?",
-  "politicalView": "Political View?",
-  "smoke": "Smoke?",
-  "wantKids": "Want to Have Kids?",
-  "wantMarried": "Want to be Married?",
-  "sports": "Sports?",
-  "hobbies": "Hobbies?",
-  "musicGenre": "Music Genres?",
-  "movieGenre": "Movies and TV Genres?",
-  "pets": "Pets?",
-  "books": "Books?",
-  "food": "Food?", 
-  "drinks": "Drinks?",
-}
-for(let i = 0; i < fields.length; i++){
-  let value = users[0].interest[fields[i]];
-  value = typeof value !== 'object' ? [value] : value;
-  data += `<small class="text-muted">${names[fields[i]]}</small><br>`
-  for(let j = 0; j < value.length; j++) {
-    data += `<span class="badge rounded-pill bg-danger">${value[j]}</span>&nbsp;`
-  }
-  data += '<hr>'
-}
-        data+='</div>';
-        card.setAttribute('data', data)
+          'astrologicalSign',
+          'religion',
+          'politicalView',
+          'smoke',
+          'wantKids',
+          'wantMarried',
+          'sports',
+          'hobbies',
+          'musicGenre',
+          'movieGenre',
+          'pets',
+          'books',
+          'food',
+          'drinks',
+        ];
+        let names = {
+          astrologicalSign: 'Astrological Sign?',
+          religion: 'Religion?',
+          politicalView: 'Political View?',
+          smoke: 'Smoke?',
+          wantKids: 'Want to Have Kids?',
+          wantMarried: 'Want to be Married?',
+          sports: 'Sports?',
+          hobbies: 'Hobbies?',
+          musicGenre: 'Music Genres?',
+          movieGenre: 'Movies and TV Genres?',
+          pets: 'Pets?',
+          books: 'Books?',
+          food: 'Food?',
+          drinks: 'Drinks?',
+        };
+        for (let i = 0; i < fields.length; i++) {
+          let value = users[0].interest[fields[i]];
+          value = typeof value !== 'object' ? [value] : value;
+          data += `<small class="text-muted">${names[fields[i]]}</small><br>`;
+          for (let j = 0; j < value.length; j++) {
+            data += `<span class="badge rounded-pill bg-danger">${value[j]}</span>&nbsp;`;
+          }
+          data += '<hr>';
+        }
+        data += '</div>';
+        card.setAttribute('data', data);
+        card.setAttribute('userId', users[0]._id);
         card.classList.add('card');
         let img = document.createElement('img');
         img.classList.add('card-img-top');
@@ -491,21 +504,21 @@ for(let i = 0; i < fields.length; i++){
         let body = document.createElement('div');
         body.classList.add('card-body');
         body.innerHTML = `
-<div class="rating d-flex text-center">
-  <div class="mx-auto justify-content-center align-self-center">${ users[0].matchRate }</div>
-</div>
-<div class="card-title d-flex justify-content-between">
-  <div>
-    <span class="h4">${users[0]?.username}, </span>
-    <span class="text-muted">${users[0].age}</span>
+  <div class="rating d-flex text-center">
+    <div class="mx-auto justify-content-center align-self-center">${users[0].matchRate}</div>
   </div>
-  <div>${users[0].location.distance} km</div>
-</div>
-<p class="card-text">
-  <span class="text-muted">${users[0].location.city}</span>
-  <hr>
-  <span class="text-muted">${users[0].shortDescription}</span>
-</p>`;
+  <div class="card-title d-flex justify-content-between">
+    <div>
+      <span class="h4">${users[0]?.username}, </span>
+      <span class="text-muted">${users[0].age}</span>
+    </div>
+    <div>${users[0].location.distance} km</div>
+  </div>
+  <p class="card-text">
+    <span class="text-muted">${users[0].location.city}</span>
+    <hr>
+    <span class="text-muted">${users[0].shortDescription}</span>
+  </p>`;
         card.append(img);
         card.append(body);
         this.board.insertBefore(card, this.board.firstChild);
@@ -517,15 +530,11 @@ for(let i = 0; i < fields.length; i++){
   let users, dialog;
   const app = async () => {
     let board = document.querySelector('#board');
-    dialog = new mdc.dialog.MDCDialog(
-      document.querySelector('.mdc-dialog')
-    );
+    dialog = new mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
 
-    let res = await fetch('http://192.168.1.12:5000/api/suggestions/', {
+    let res = await fetch(API_URL + 'api/suggestions/', {
       headers: {
-        authorization:
-          localStorage.getItem('access_token') ||
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIiLCJsb25naXR1ZGUiOiIifSwibW9iaWxlTnVtYmVyIjoiMDkxMjM0NTY3ODkiLCJmYWNlYm9va0lkIjoiIiwiZ21haWwiOiIiLCJzZXgiOiIiLCJzaG93QWN0aXZlU3RhdHVzIjp0cnVlLCJhY3RpdmVTdGF0dXMiOiJvbmxpbmUiLCJ2ZXJpZmljYXRpb25TdGF0dXMiOiJ1bnZlcmlmaWVkIiwiZW1wbG95bWVudCI6IiIsImJsb2NrZWRVc2VycyI6W10sImxlZnRDb252ZXJzYXRpb25zIjpbXSwiX2lkIjoiNjBkYTFhOWIyYTJhMTJkNTA4NzRmNDI5IiwidXNlcm5hbWUiOiJvbmEzMSIsImZpcnN0TmFtZSI6Ik9uYSIsImxhc3ROYW1lIjoiSGVzc2VsIiwib3JpZW50YXRpb24iOiJTdHJhaWdodCAobWFsZSkiLCJiaXJ0aGRheSI6IjIwNTEtMDctMzBUMjA6NTk6NTkuNjQwWiIsIl9fdiI6MCwiaWF0IjoxNjI0OTA2Mzk1fQ.IFkyIYYECxDAwXzTfG8nq1B7982N7UdgZuS_OXPamz8',
+        authorization: access_token,
       },
     });
 
