@@ -70,40 +70,7 @@
                             hr class="dropdown-divider"
                             -->
         <!--sample message inbox-->
-        <div class="message-div">
-            <div class="message-item" onclick="window.location.href='chatbox.html';">
-                <div class="message-item--div">
-                    <div class="messaged-user-photo">
-                        <img src="../photos/2.png" class="thumbnail">
-                    </div>
-                    <div class="messaged-user">
-                        <h4 class="user-name">Gray</h4>
-                        <p class="message">Hello there!
-                            <p class="time">1:30 PM</p>
-                        </p>
-                    </div>
-                </div>
-                <br>
-                <hr class="dropdown-divider">
-            </div>
-            <div class="message-item">
-                <div class="message-item--div">
-                    <div class="messaged-user-photo">
-                        <img src="../photos/1.png" class="thumbnail">
-                    </div>
-                    <div class="messaged-user">
-                        <h4 class="user-name">Paul Kim</h4>
-                        <p class="message">Do you want to be Mrs. Kim?
-                            <p class="time">12:30 PM</p>
-                        </p>
-                    </div>
-                </div>
-                <br>
-                <hr class="dropdown-divider">
-            </div>
-
-
-        </div>
+        <div class="message-div" id="all-users"></div>
 
     </div>
     <!--tabs-->
@@ -170,5 +137,74 @@
         new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
     </script>
 </body>
-
 </html>
+<script src="https://cdn.socket.io/4.1.1/socket.io.min.js" integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a" crossorigin="anonymous"></script>
+<script src="../scripts/constants.js"></script>
+<script>
+  const redirect = (username) => {
+          location.href = './chatbox.html#' + username;
+        }
+        (function(){
+            // Connect to socket.io
+            var socket = io(WS_URL);
+            // Check for connection
+            if(socket !== undefined){
+                console.log('Connected to socket...');
+                // Handle Output
+                socket.emit('viewAllUsers', localStorage.getItem('user_id'));
+                socket.on('showAllUsers', function(data) {
+                  data.map(user => {
+                    time = new Date(user.timeSent)
+                    time = time.toString().split(' ')[4].split(':').slice(0,2);
+                    time[0] = time[0] > 12 ? time[0]-12 : time[0];
+                    ext = time[0] > 12 ? 'PM' : 'AM';
+                    time[0] = time[0] === '00' ? '12' : time[0];
+                    ext = time[0] === '00' ? 'AM' : 'PM';
+                    time = time.join(':').concat(' ').concat(ext)
+                    document.getElementById('all-users').innerHTML += `
+            <div class="message-item" onclick="redirect('${user._id}')">
+                <div class="message-item--div">
+                    <div class="messaged-user-photo">
+                        <img src="${user.picture.blurredImage}" class="thumbnail">
+                    </div>
+                    <div class="messaged-user">
+                        <h4 class="user-name">${user.username}</h4>
+                        <p class="message">${user.latestMessage}
+                            <p class="time">${time}</p>
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <hr class="dropdown-divider">
+            </div>`
+                  })
+                  console.log(data);
+                })
+              /*
+                socket.on('newMessage', function(data) {
+                let fromSelf = data.sender.username === localStorage.getItem('username');
+                let id = fromSelf ? data.receiver.username : data.sender.username;
+                let image = fromSelf ? data.receiver.image : data.sender.image;
+                let username = data.sender.username;
+                let message = data.chats[0].message;
+
+                console.log(data);
+                document.getElementById('user-@'+id)?.remove();
+                document.getElementById('all-users').innerHTML = `
+                   <div class="card px-3 py-2 mb-2 bg-white rounded" id="user-@${id}" onclick="redirect('${id}')">
+                      <div class="row">
+                        <div class="col-3">
+                          <img src="${image}" width=75px class="rounded">
+                        </div>
+                        <div class="col-6 my-auto mx-0">${username}<br><span class="text-muted">${message}</span></div>
+                        </div>
+                    </div>`+document.getElementById('all-users').innerHTML
+              });
+
+              socket.on('alert', function (data) {
+                alert(data)
+              })
+              */
+            }
+        })();
+</script>
