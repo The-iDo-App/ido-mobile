@@ -205,6 +205,7 @@
               role="tab"
               aria-selected="true"
               tabindex="0"
+              onclick="location.href='./messaging/inbox.html'"
             >
               <span class="mdc-tab__content">
                 <span class="mdc-tab__icon" aria-hidden="true">
@@ -226,6 +227,7 @@
               role="tab"
               aria-selected="true"
               tabindex="0"
+              onclick="location.href='./profile.html'"
             >
               <span class="mdc-tab__content">
                 <span class="mdc-tab__icon" aria-hidden="true">
@@ -247,6 +249,7 @@
               role="tab"
               aria-selected="true"
               tabindex="0"
+              onclick="location.href='./settings/'"
             >
               <span class="mdc-tab__content">
                 <span class="mdc-tab__icon" aria-hidden="true">
@@ -281,7 +284,7 @@
 <script>
   const access_token =
     localStorage.getItem('access_token') ||
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIxNC45NzY4NDU0ODA3MDc4MSIsImxvbmdpdHVkZSI6IjEyMS40MDgzMTg4ODYxMjYxMSJ9LCJtb2JpbGVOdW1iZXIiOiIwOTEyMzQ1Njc4OSIsImZhY2Vib29rSWQiOiIiLCJnbWFpbCI6IiIsInNleCI6IiIsInNob3dBY3RpdmVTdGF0dXMiOnRydWUsImFjdGl2ZVN0YXR1cyI6Im9ubGluZSIsInZlcmlmaWNhdGlvblN0YXR1cyI6InVudmVyaWZpZWQiLCJlbXBsb3ltZW50IjoiIiwiYmxvY2tlZFVzZXJzIjpbXSwibGVmdENvbnZlcnNhdGlvbnMiOltdLCJfaWQiOiI2MGRhYmU4ZDJjOWM5YjQ5MTQzZTQ1ZWEiLCJ1c2VybmFtZSI6ImFsaXNhMDIiLCJmaXJzdE5hbWUiOiJBbGlzYSIsImxhc3ROYW1lIjoiSGFnZW5lcyIsIm9yaWVudGF0aW9uIjoiU3RyYWlnaHQgKG1hbGUpIiwiYmlydGhkYXkiOiIyMDA2LTA3LTAxVDIwOjUwOjAxLjg1MloiLCJfX3YiOjAsImlhdCI6MTYyNDk0ODM2NX0.BDU5wwQtFueqtGOWqklQa8ri16a9JHTRxUu_mEpuaz8';
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIxNC42MDk2MjkwMjI5ODAxNDYiLCJsb25naXR1ZGUiOiIxMjEuMDI2NTU4ODI0ODQ3OTgifSwibW9iaWxlTnVtYmVyIjoiMDkxMjM0NTY3ODkiLCJmYWNlYm9va0lkIjoiIiwiZ21haWwiOiIiLCJzZXgiOiIiLCJzaG93QWN0aXZlU3RhdHVzIjp0cnVlLCJhY3RpdmVTdGF0dXMiOiJvbmxpbmUiLCJ2ZXJpZmljYXRpb25TdGF0dXMiOiJ1bnZlcmlmaWVkIiwiZW1wbG95bWVudCI6IiIsImJsb2NrZWRVc2VycyI6W10sImxlZnRDb252ZXJzYXRpb25zIjpbXSwiX2lkIjoiNjBkYWZmMjMxYTRmNjY4MDQxNTAzNTUyIiwidXNlcm5hbWUiOiJqb25hczMxIiwiZmlyc3ROYW1lIjoiSm9uYXMiLCJsYXN0TmFtZSI6IkZhcnJlbGwiLCJvcmllbnRhdGlvbiI6IlN0cmFpZ2h0IChtYWxlKSIsImJpcnRoZGF5IjoiMjAyNS0xMC0zMVQxMzo1NToxMi41ODNaIiwiX192IjowLCJpYXQiOjE2MjQ5NjQ4OTl9.p3yDgtBnI0ChiHLvFftfGPqI7FcjJiM_8WjehBAjeJQ';
 
   new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
   class Carousel {
@@ -412,6 +415,15 @@
                 this.topCard.getAttribute('userId'),
               { method: 'POST', headers: { authorization: access_token } }
             );
+          } else if (e.direction === Hammer.DIRECTION_DOWN) {
+            fetch(
+              API_URL +
+                'api/suggestions/' +
+                this.topCard.getAttribute('userId'),
+              { method: 'POST', headers: { authorization: access_token } }
+            );
+            location.href =
+              './messaging/chatbox.html#' + this.topCard.getAttribute('userId');
           }
 
           setTimeout(() => {
@@ -527,6 +539,15 @@
     }
   }
 
+  window.addEventListener('pageshow', function (event) {
+    var historyTraversal =
+      event.persisted ||
+      (typeof window.performance != 'undefined' &&
+        window.performance.navigation.type === 2);
+    if (historyTraversal) {
+      window.location.reload();
+    }
+  });
   let users, dialog;
   const app = async () => {
     let board = document.querySelector('#board');
