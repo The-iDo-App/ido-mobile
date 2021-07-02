@@ -1,67 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--font awesome script-->
+    <script src="https://kit.fontawesome.com/bcbd543404.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap cdn link-->
+    <!--Bootstrap script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js " integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js " integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT " crossorigin="anonymous "></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!--Material.io links-->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!--google fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/profile.css">
+    <meta name="viewport" media content="width=device-width, initial-scale=1.0">
     <title></title>
-  </head>
-  <body>
-    <img id="profile-picture" />
-    Bio: <span id="bio-area"></span>
-    <form id="profile-picture-form">
-      <input type="file" />
-      <input type="submit" value="Save Changes" />
-    </form>
-    <form id="bio-form">
-      <input type="text" id="bio" />
-      <input type="submit" value="Save Changes" />
-    </form>
-  </body>
+    <style>
+        .main {
+            position: relative;
+            top: 40px;
+            max-width: 100%;
+            height: 640px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--header for logo-brand-->
+    <header>
+        <div class="box">
+            <img class="logo" src="icons/Logo-whitebg.png">
+        </div>
+        <hr style="margin: 0; ">
+    </header>
+    <!--div for profile picture-->
+    <!--div for bio-->
+    <!--div for interest-->
+    <!--div for profile-->
+    <div class="container main">
+        <!--div for row of profiles-->
+        <div class="row">
+            <!--start first col-12 is the photo, name and city of user-->
+            <div class="col-12 photo-name-city-container">
+                <div class="container ">
+                    <!--this can be card tho...-->
+                    <div class="row">
+                        <div class="col-7">
+                            <!-- start user's profile photo and change photo-->
+
+                            <div class="profile-picture-div text-center">
+                                <img id="profile-picture" class="img-thumbnail img-fluid profile-pic-click center-block" />
+                                <button class="btn shadow-none upload-btn" data-bs-toggle="modal" data-bs-target="#uploadphotoModal">
+                                  <i class="fa fa-camera select" style="z-index: 10;font-size: 16px; color: #3f464d;"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                        <!--end of user's profile photo and change photo div-->
+
+                        <div class="col-5">
+                            <!--start user's name and city-->
+                            <div class="city-name-div">
+                                <h4 class="users-name">Helena Grey</h4>
+                                <p class="users-city">Quezon City</p>
+                            </div>
+
+                        </div>
+                        <!-- end of user's name and city div -->
+                    </div>
+                </div>
+            </div>
+            <!-- end of first col-12 is the photo, name and city of user div-->
+            <!--start second col-12 is the user's bio-->
+            <div class="col-12 p-0 bio">
+                <div class="container bio">
+                    <!--line behind the text 
+                    --Bio----------------------edit--
+                    -->
+                    <h4 class="back"><span class="bio-title">Bio</span>
+                        <button class="edit-bio-btn btn shadow-none" data-bs-toggle="modal" data-bs-target="#bioModal">
+                          <i class="fa fa-pencil edit"></i>
+                        </button>
+                    </h4>
+                    <div class="bio-area-div text-wrap">
+                        <span id="bio-area" class="text-wrap bio-area-text">
+                            Write something about yourself...
+                        </span>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!--end of second col-12 is the user's bio div-->
+            <!--start second col-12 is the user's interests-->
+            <div class="col-12 p-0 interest">
+                <div class="container interest">
+                    <h4 class="back"><span class="bio-title">Interests</span></h4>
+                    <!--Interest sample: Books-->
+                    <div class="interest-div">
+                        <h5 class="interest-category">Books</h5>
+                        <div class="badges-interest">
+                            <span class="badge rounded-pill ">Mystery</span>
+                            <span class="badge rounded-pill ">Thriller</span>
+                            <span class="badge rounded-pill ">Fantasy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of second col-12 is the user's bio div-->
+
+        </div>
+    </div>
+
+    <!--modal for profile picture-->
+    <div class="modal" id="uploadphotoModal" tabindex="-1" role="dialog" aria-labelledby="uploadphotoModalLabel" aria-hidden="true" data-bs-backdrop="true">
+        <div class="modal-dialog modal-sm"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadphotoModalLabel" style="color: #8999a8; font-size: 18px;">Change your profile picture</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container mx-auto my-auto" style="">
+
+                    <!--profile photo-->
+                    <div class="viewer-photo">
+                        <img id="viewer" class="img-thumbnail img-fluid mx-auto my-auto" style="z-index: 1000000; width: 100%; border-radius: 50%;" />
+                    </div>
+                    <!--profile-pic form-->
+
+                    <form id="profile-picture-form" class="form-profPic">
+                        <label class="upload-photo" for="uploadPic">
+                        <i class="fa fa-plus" style="color: #FF6e83;"></i>
+                        </label>
+                        <input type="file" id="uploadPic" />
+                        <br>
+                        <hr class="dropdown-divider" style="position: relative; top: 30px;">
+                        <input type="submit" value="Save Changes" data-bs-dismiss="modal" class="btn save-changes" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--modal for editing bio-->
+    <div class="modal" id="bioModal" tabindex="-1" role="dialog" aria-labelledby="bioModalLabel" aria-hidden="true" data-bs-backdrop="true">
+        <div class="modal-dialog modal-sm"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadphotoModalLabel">Write about yourself!</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container mx-auto my-auto" style="height: 200px;">
+                    <!--bio form-->
+                    <form id="bio-form" class="bio-form">
+                        <textarea type="text" id="bio" class="edit-bio-input shadow-none"></textarea>
+                        <input type="submit" value="Save Changes" data-bs-dismiss="modal" class="btn save-changes" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
 <script src="./scripts/constants.js"></script>
 <script>
-  let user_id = localStorage.getItem('user_id');
-  let access_token = localStorage.getItem('access_token');
-  window.addEventListener('load', function () {
-    fetch(API_URL + 'api/profiles/' + user_id, {
-      method: 'GET',
-      headers: { authorization: access_token },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        document.querySelector('#bio-area').innerText =
-          res.user.shortDescription;
-        document
-          .querySelector('#profile-picture')
-          .setAttribute('src', res.user.picture.originalImage);
-      });
-  });
-
-  document
-    .getElementById('profile-picture-form')
-    .addEventListener('submit', (e) => {
-      e.preventDefault();
-      var input = document.querySelector('input[type="file"]');
-      var data = new FormData();
-      data.append('file', input.files[0]);
-
-      fetch(API_URL + 'api/profiles/' + user_id, {
-        method: 'POST',
-        headers: { authorization: access_token },
-        body: data,
-      });
+    localStorage.setItem('access_token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiIiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIiLCJsb25naXR1ZGUiOiIifSwibW9iaWxlTnVtYmVyIjoiMDkxMjM0NTY3ODkiLCJmYWNlYm9va0lkIjoiIiwiZ21haWwiOiIiLCJzZXgiOiIiLCJzaG93QWN0aXZlU3RhdHVzIjp0cnVlLCJhY3RpdmVTdGF0dXMiOiJvbmxpbmUiLCJ2ZXJpZmljYXRpb25TdGF0dXMiOiJ1bnZlcmlmaWVkIiwiZW1wbG95bWVudCI6IiIsImJsb2NrZWRVc2VycyI6W10sImxlZnRDb252ZXJzYXRpb25zIjpbXSwiX2lkIjoiNjBkYWNjOGY3Mjc3NzEyM2EwMzJmZTRiIiwidXNlcm5hbWUiOiJoZWxlbmEwOCIsImZpcnN0TmFtZSI6IkhlbGVuYSIsImxhc3ROYW1lIjoiR2xvdmVyIiwib3JpZW50YXRpb24iOiJTdHJhaWdodCAobWFsZSkiLCJiaXJ0aGRheSI6IjIwNTQtMTEtMDdUMjI6Mzc6MDkuODM1WiIsIl9fdiI6MCwiaWF0IjoxNjI0OTUxOTUxfQ.teI4h5mGj8xNCLOdaYuaLNTSZsJsNnmpBtIP4B0O8os');
+    localStorage.setItem("user_id", "60dacc8f72777123a032fe4b");
+    let user_id = localStorage.getItem('user_id');
+    let access_token = localStorage.getItem('access_token');
+    window.addEventListener('load', function() {
+        fetch(API_URL + 'api/profiles/' + user_id, {
+                method: 'GET',
+                headers: {
+                    authorization: access_token
+                },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                document.querySelector('#bio-area').innerText =
+                    res.user.shortDescription;
+                document
+                    .querySelector('#profile-picture')
+                    .setAttribute('src', res.user.picture.originalImage);
+                document
+                    .querySelector('#viewer')
+                    .setAttribute('src', res.user.picture.originalImage);
+            });
     });
 
-  document.getElementById('bio-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    let bio = document.querySelector('#bio').value;
+    document
+        .getElementById('profile-picture-form')
+        .addEventListener('submit', (e) => {
+            e.preventDefault();
+            var input = document.querySelector('input[type="file"]');
+            var data = new FormData();
+            data.append('file', input.files[0]);
 
-    fetch(API_URL + 'api/profiles/' + user_id, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: access_token,
-      },
-      body: JSON.stringify({ bio }),
+            fetch(API_URL + 'api/profiles/' + user_id, {
+                method: 'POST',
+                headers: {
+                    authorization: access_token
+                },
+                body: data,
+            });
+        });
+
+    document.getElementById('bio-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        let bio = document.querySelector('#bio').value;
+
+        fetch(API_URL + 'api/profiles/' + user_id, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: access_token,
+            },
+            body: JSON.stringify({
+                bio
+            }),
+        });
     });
-  });
 </script>
