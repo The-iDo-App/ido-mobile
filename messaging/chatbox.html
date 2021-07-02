@@ -28,10 +28,13 @@
     <meta name="viewport" media content="width=device-width, initial-scale=1.0">
 </head>
 <style>
+    .container {
+        width: 100%;
+    }
+    
     .chat-box {
         position: relative;
         top: 71px;
-        width: 100%;
         height: auto;
     }
     
@@ -126,11 +129,11 @@
                         <div class="text-center">
                             <img class="thumbnail
                             img-thumbnail mx-auto my-2 d-block
-                            " src="" id="receiver-image">
+                            " src="../photos/2.png">
                         </div>
                     </div>
                     <div class="col-5 mx-0">
-                        <h4 class="user-name mx-0 my-4 center-block" id="receiver-username"></h4>
+                        <h4 class="user-name mx-0 my-4 center-block">Gray</h4>
                     </div>
                     <div class="col-2">
                         <img class="img-fluid message-settings mx-auto text-center center-block" onclick="window.location.href='message-settings.html'" src="../icons/others.png">
@@ -143,24 +146,44 @@
         <hr style="margin: 0; z-index: 1000;">
     </header>
     <!--Message body-->
-    <div class="container chat-box my-2 mx-auto" style="overflow-y: scroll; max-height: 70vh" id="chat-box">
-        <div class="row chat-chat" id="messages">
-            <!-- <div class="col-12 pt-2"> -->
-            <!--     <br> -->
-            <!--     <span class="text-center center-block match-user">You match with Gray! Say something.</span> -->
-            <!-- </div> -->
-            <!-- <div class="col-12"> -->
-            <!--     <span class="action">seen</span> -->
-            <!-- </div> -->
-            <!-- <div class="col-12"></div> -->
-            <!-- <div class="col-12"></div> -->
-            <!-- <div class="col-12"></div> -->
-            <!-- <div class="col-12"></div> -->
-            <!-- <div class="col-12"></div> -->
-            <!-- <div class="col-12"></div> -->
-            <!-- <div class="col-12"> -->
-            <!--     <span class="elipsis">Gray is typing...</span> -->
-            <!-- </div> -->
+    <div class="container chat-box my-2 mx-auto">
+        <div class="row chat-chat">
+            <div class="col-12 pt-2">
+                <br>
+                <span class="text-center center-block match-user">You match with Gray! Say something.</span>
+            </div>
+            <div class="col-12  pt-2">
+                <span class="text-center center-block time">1:30 PM</span>
+            </div>
+            <div class="col-12 message-balloon">
+                <div class="card text-wrap" id="message1">
+                    <div class="card-body">
+                        <p class="message-chat">Hello there!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <span class="text-center center-block time" id="time2">2:45 PM</span>
+            </div>
+            <div class="col-12 message-balloon text-wrap">
+                <div class="card text-wrap" id="message2">
+                    <div class="card-body">
+                        <p class="message-chat text-light">OMG! Hi Gray agadgdagadgadgadg</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <span class="action">seen</span>
+            </div>
+            <div class="col-12"></div>
+            <div class="col-12"></div>
+            <div class="col-12"></div>
+            <div class="col-12"></div>
+            <div class="col-12"></div>
+            <div class="col-12"></div>
+            <div class="col-12">
+                <span class="elipsis">Gray is typing...</span>
+            </div>
         </div>
 
     </div>
@@ -192,72 +215,8 @@
             </div>
         </div>
     </div>
+    <script>
+    </script>
 </body>
+
 </html>
-<script src="https://cdn.socket.io/4.1.1/socket.io.min.js" integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a" crossorigin="anonymous"></script>
-<script src="../scripts/constants.js"></script>
-<script>
-  (function(){
-            var element = function(id){
-                return document.getElementById(id);
-            }
-
-            // Get Elements
-            var messages = element('messages');
-            var textarea = element('chatArea');
-
-            // Connect to socket.io
-            var socket = io(WS_URL);
-
-            // Check for connection
-            if(socket !== undefined){
-                console.log('Connected to socket...');
-
-                // Handle Output
-                socket.emit('viewOne', { from: localStorage.getItem('user_id'), to: location.hash.slice(1) });
-                socket.on('showChat', function(data){
-                  console.log(data)
-                  if(data.first) {
-                    element('receiver-image').setAttribute('src', data.receiver.picture.blurredImage);
-                    element('receiver-username').innerText = data.receiver.username;
-                  }
-                    console.log(data)
-                    data = data.chats;
-                    if(data.length){
-                        for(var x = 0;x < data.length;x++){
-                            // Build out message div
-                          let fromSelf = data[x].senderId === localStorage.getItem('user_id');
-                          messages.innerHTML += `
-            <div class="col-12">
-                <span class="text-center center-block time" id="time2">${data[x].timeSent}</span>
-            </div>
-            <div class="col-12 message-balloon text-wrap">
-                <div class="card text-wrap" id="message${fromSelf ? 2 : 1}">
-                    <div class="card-body">
-                            <p class="message-chat ${fromSelf ? 'text-light' : ''}">${data[x].body}</p>
-                    </div>
-                </div>
-            </div>`
-                          element('chat-box').scrollTop = messages.scrollHeight;
-                        }
-                    }
-                });
-
-                // Handle Input
-                textarea.addEventListener('keydown', function(event){
-                    if(event.which === 13 && event.shiftKey == false){
-                        // Emit to server input
-                        socket.emit('input', {
-                            from: localStorage.getItem('user_id'),
-                            to: location.hash.slice(1),
-                            message:textarea.value
-                        });
-
-                        textarea.value = '';
-
-                        event.preventDefault();
-                    }
-                })
-            }
-        })();
-</script>
