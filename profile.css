@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+}
+
+.box {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    width: 73.14px;
+    height: 74px;
+}
+
+hr {
+    color: rgba(137, 153, 168, 0.8);
+}
+
+.logo {
+    object-fit: contain;
+    width: 53px;
+    height: 42px;
+    margin: auto;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    display: block;
+}
+
+
+/*photo-name-city-column */
+
+.photo-name-city-container {
+    height: 150px;
+}
+
+.profile-picture-div {
+    position: relative;
+    margin: auto;
+    top: 0;
+    left: 15px;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    height: 150px;
+}
+
+.profile-pic-click {
+    border-radius: 50%;
+    width: 130px;
+    margin: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-color: none;
+    background-color: #1381a2;
+}
+
+.upload-btn {
+    border-color: #8999a8;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+    top: -40px;
+    left: 40px;
+    z-index: 1000;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    text-align: center;
+    align-items: center;
+}
+
+.upload-btn:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.upload-btn:hover>.select,
+.upload-btn:focus>.select {
+    color: #1381a2 !important;
+}
+
+.city-name-div {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: 40px;
+    left: -10px;
+    right: 0;
+    bottom: 0;
+}
+
+.users-name {
+    width: 100%;
+    margin: auto;
+    font-size: 20px;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #1381a2;
+    font-weight: 500;
+}
+
+.users-city {
+    width: 100%;
+    margin: auto;
+    font-size: 16px;
+    position: relative;
+    top: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #8999a8;
+    font-weight: 400;
+}
+
+
+/*modal for change profile picture*/
+
+.viewer-photo {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+}
+
+.form-profPic {
+    position: relative;
+    top: -38px;
+    height: 80px;
+    padding: 0;
+}
+
+#uploadPic {
+    display: none;
+}
+
+.upload-photo {
+    border: solid 1px #8999a8;
+    background-color: white;
+    padding: 4px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    top: 0;
+    left: 60%;
+    right: 0;
+    bottom: 0;
+}
+
+.save-changes {
+    background-color: #ff9b99;
+    float: right;
+    position: relative;
+    top: 35px;
+    border-radius: 40px;
+    color: white;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.save-changes:hover,
+.save-changes:focus {
+    background-color: #eb667a;
+    color: white;
+}
+
+
+/*bio */
+
+.bio {
+    height: 200px;
+}
+
+.back {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    position: relative;
+    margin: 0;
+    top: 15px;
+    left: 0;
+    text-transform: uppercase;
+    width: 100%;
+    color: #8999a8;
+}
+
+.back {
+    position: relative;
+    z-index: 1;
+}
+
+.back::before {
+    border-top: 2px solid #dfdfdf;
+    content: "";
+    margin: 0 auto;
+    /* this centers the line to the full width specified */
+    position: absolute;
+    /* positioning must be absolute here, and relative positioning must be applied to the parent */
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.bio-title {
+    /* to hide the lines from behind the text, you have to set the background color the same as the container */
+    background: #fff;
+    padding: 0 15px;
+}
+
+.edit-bio-btn {
+    background: #fff;
+    border-radius: 50%;
+    border-color: #8999a8;
+    position: relative;
+    float: right;
+    padding: 0 5px;
+}
+
+.edit {
+    color: #8999a8;
+}
+
+.edit-bio-btn:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.edit-bio-btn:hover>.edit,
+.edit-bio-btn:focus>.edit {
+    color: #1381a2 !important;
+}
+
+.bio-area-div {
+    margin: auto;
+    padding: 2px 4px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 12%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    color: #8999a8;
+    text-justify: justify;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.bio-area-text {
+    margin: auto;
+    width: 90%;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/*modal for bio edit*/
+
+.edit-bio-input {
+    text-justify: justify;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+    height: 113px;
+    resize: none;
+    color: #1381a2;
+    border: solid 1px #8999a8;
+}
+
+.bio-form {
+    height: 190px;
+}
+
+
+/*interest */
+
+.interest {
+    height: 100px;
+}
+
+.interest-div {
+    top: 30px;
+    width: 80%;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    height: auto;
+}
+
+.badges-interest {
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.interest-category {
+    font-size: 18px;
+    color: #1381a2;
+    font-weight: 600;
+}
+
+.rounded-pill {
+    background-color: #ff6e83;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 12px;
+}
+
+
+/* modal*/
+
+.modal {
+    width: 360px;
+    margin: auto;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+/*main class inside container class when the screen is over 1000px*/
+
+@media screen and (min-width: 480px) {
+    .main {
+        width: 360px;
+    }
+    .upload-btn {
+        border-color: #8999a8;
+        border-radius: 50%;
+        background-color: white;
+        position: relative;
+        top: -40px;
+        left: 40px;
+    }
+    .users-name {
+        font-size: 19px;
+    }
+}
