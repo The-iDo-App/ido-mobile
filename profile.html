@@ -27,6 +27,30 @@
             max-width: 100%;
             height: 640px;
         }
+        
+        .mdc-tab-bar {
+            --mdc-theme-primary: #ff6e83;
+            box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.17);
+            height: 70px;
+        }
+        
+        .mdc-tab__content img {
+            height: 120%;
+        }
+        
+        .mdc-tab--active img {
+            filter: invert(61%) sepia(29%) saturate(3367%) hue-rotate(311deg) brightness(103%) contrast(101%);
+        }
+        
+        .mdc-ripple-upgraded--background-focused,
+        .mdc-text-field {
+            background-color: white !important;
+        }
+        
+        .mdc-tab-icon {
+            position: relative;
+            top: -10px;
+        }
     </style>
 </head>
 
@@ -114,6 +138,66 @@
                 </div>
             </div>
             <!--end of second col-12 is the user's bio div-->
+
+        </div>
+    </div>
+    <!--tabs-->
+    <div class="mdc-tab-bar" role="tablist" style="position: fixed; bottom: 0; left: 0; z-index: 100; background-color: white;">
+        <div class="mdc-tab-scroller">
+            <div class="mdc-tab-scroller__scroll-area mdc-tab-scroll-area--scroll" style="overflow-y:hidden; margin-bottom: 0;">
+                <div class="mdc-tab-scroller__scroll-content">
+                    <!--Matchmaking-->
+                    <button id="mdc-tab-1" class="mdc-tab mdc-tab--active mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                            <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon" aria-hidden="true">
+                                    <img src="../icons/match.png">
+                                </span>
+                            </span>
+                               
+                            <span class="mdc-tab-indicator">
+                                 <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style="border-color: transparent !important;"></span>
+                            </span>
+                           
+                        </button>
+                    <!--Messaging-->
+                    <button id="mdc-tab-2" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                             <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon" aria-hidden="true">
+                                    <img src="../icons/message.png">
+                                </span>
+                            </span>
+                               
+                             <span class="mdc-tab-indicator">
+                                 <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style="border-color: transparent !important;"></span>
+                            </span>
+                        </button>
+                    <!--Profile-->
+                    <button id="mdc-tab-3" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                             <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon" aria-hidden="true">
+                                    <img src="../icons/profile.png">
+                                </span>
+                            </span>
+                               
+                             <span class="mdc-tab-indicator">
+                                 <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style="border-color: transparent !important;"></span>
+                            </span>
+                            
+                        </button>
+                    <!--Settings-->
+                    <button id="mdc-tab-4" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                             <span class="mdc-tab__content">
+                                <span class="mdc-tab__icon" aria-hidden="true">
+                                    <img src="../icons/settings.png">
+                                </span>
+                            </span>
+                           
+                             <span class="mdc-tab-indicator">
+                                 <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style="border-color: transparent !important;"></span>
+                            </span>
+                        </button>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -229,4 +313,5 @@
             }),
         });
     });
+    new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
 </script>
