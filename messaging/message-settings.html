@@ -59,7 +59,7 @@
 <body>
     <header style="position: fixed; width: 100%;top: 0; z-index: 100; background-color: white;">
         <div class="box">
-            <i class="fa fa-arrow-left mx-auto my-auto" style="font-size: 25px; position: relative; top: 23px; left: 30px; color: #8999a8;" onclick="window.location.href='chatbox.html'"></i>
+            <i class="fa fa-arrow-left mx-auto my-auto" style="font-size: 25px; position: relative; top: 23px; left: 30px; color: #8999a8;" id="back-button"></i>
         </div>
         <hr style="margin: 0;">
     </header>
@@ -211,5 +211,9 @@
         new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
     </script>
 </body>
-
 </html>
+<script>
+  document.getElementById('back-button').addEventListener('click', () => {
+    location.href = './chatbox.html' + location.hash;
+  })
+</script>

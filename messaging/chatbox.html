@@ -136,7 +136,7 @@
                         <h4 class="user-name mx-0 my-4 center-block" id="receiver-username">Gray</h4>
                     </div>
                     <div class="col-2">
-                        <img class="img-fluid message-settings mx-auto text-center center-block" onclick="window.location.href='message-settings.html'" src="../icons/others.png">
+                        <img class="img-fluid message-settings mx-auto text-center center-block" id="message-settings" src="../icons/others.png">
                     </div>
                 </div>
             </div>
@@ -199,6 +199,9 @@
             var element = function(id){
                 return document.getElementById(id);
             }
+            element('message-settings').addEventListener('click', () => {
+              location.href = './message-settings.html' + location.hash;
+            })
 
             // Get Elements
             var messages = element('messages');
