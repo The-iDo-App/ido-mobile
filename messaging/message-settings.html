@@ -87,14 +87,14 @@
         <div class="modal-dialog  modal-sm"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <button class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close" id="closebtn "></button>
+                <button class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close" id="closebtn"></button>
             </div>
             <div class="modal-body ">
                 <p class="block-statement ">Do you want to block this user?</p>
             </div>
             <div class="modal-footer ">
                 <button class="btn no shadow-none" data-bs-dismiss="modal" aria-label="Close">No</button>
-                <button class="btn block shadow-none" data-bs-dismiss="modal" aria-label="Close" id="blockBtn ">Yes</button>
+                <button class="btn block shadow-none" data-bs-dismiss="modal" aria-label="Close" id="blockBtn">Yes</button>
             </div>
         </div>
     </div>
@@ -212,8 +212,28 @@
     </script>
 </body>
 </html>
+<script src="../scripts/constants.js"></script>
 <script>
   document.getElementById('back-button').addEventListener('click', () => {
     location.href = './chatbox.html' + location.hash;
   })
+document.querySelector('#blockBtn').addEventListener('click', () => {
+  let user_id = location.hash.slice(1);
+  let access_token = localStorage.getItem('access_token');
+
+  fetch(API_URL + 'api/settings/blocked-users', {
+    method: 'POST',
+    headers: {
+      authorization: access_token,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user_id }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      location.href = './inbox.html';
+    });
+
+})
 </script>
