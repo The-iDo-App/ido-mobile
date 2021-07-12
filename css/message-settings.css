@@ -116,3 +116,26 @@ hr {
     font-size: 14px;
     font-weight: 300;
 }
+
+
+/* modal*/
+
+.modal {
+    width: 360px;
+    margin: auto;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.report {
+    width: 360px;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

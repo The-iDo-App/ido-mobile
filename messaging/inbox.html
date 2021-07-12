@@ -70,40 +70,7 @@
                             hr class="dropdown-divider"
                             -->
         <!--sample message inbox-->
-        <div class="message-div">
-            <div class="message-item" onclick="window.location.href='chatbox.html';">
-                <div class="message-item--div">
-                    <div class="messaged-user-photo">
-                        <img src="../photos/2.png" class="thumbnail">
-                    </div>
-                    <div class="messaged-user">
-                        <h4 class="user-name">Gray</h4>
-                        <p class="message">Hello there!
-                            <p class="time">1:30 PM</p>
-                        </p>
-                    </div>
-                </div>
-                <br>
-                <hr class="dropdown-divider">
-            </div>
-            <div class="message-item">
-                <div class="message-item--div">
-                    <div class="messaged-user-photo">
-                        <img src="../photos/1.png" class="thumbnail">
-                    </div>
-                    <div class="messaged-user">
-                        <h4 class="user-name">Paul Kim</h4>
-                        <p class="message">Do you want to be Mrs. Kim?
-                            <p class="time">12:30 PM</p>
-                        </p>
-                    </div>
-                </div>
-                <br>
-                <hr class="dropdown-divider">
-            </div>
-
-
-        </div>
+        <div class="message-div" id="all-users"></div>
 
     </div>
     <!--tabs-->
@@ -112,7 +79,7 @@
             <div class="mdc-tab-scroller__scroll-area mdc-tab-scroll-area--scroll" style="overflow-y:hidden; margin-bottom: 0;">
                 <div class="mdc-tab-scroller__scroll-content">
                     <!--Matchmaking-->
-                    <button id="mdc-tab-1" class="mdc-tab mdc-tab--active mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-1" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                             <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/match.png">
@@ -125,7 +92,7 @@
                            
                         </button>
                     <!--Messaging-->
-                    <button id="mdc-tab-2" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-2" class="mdc-tab mdc-tab--active mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                              <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/message.png">
@@ -170,5 +137,84 @@
         new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
     </script>
 </body>
-
 </html>
+<script src="https://cdn.socket.io/4.1.1/socket.io.min.js" integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a" crossorigin="anonymous"></script>
+<script src="../scripts/constants.js"></script>
+<script>
+  localStorage.setItem('user_id', '60e5b724efb8393b2ebcef8d');
+  localStorage.getItem('access_token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIxNC4wMDE2MjIzMjg5NzEwNzkiLCJsb25naXR1ZGUiOiIxMjEuNjYwOTUwMTEwOTQwOCJ9LCJtb2JpbGVOdW1iZXIiOiIwOTEyMzQ1Njc4OSIsImZhY2Vib29rSWQiOiIiLCJnbWFpbCI6IiIsInNleCI6IiIsInNob3dBY3RpdmVTdGF0dXMiOnRydWUsImFjdGl2ZVN0YXR1cyI6Im9ubGluZSIsInZlcmlmaWNhdGlvblN0YXR1cyI6InVudmVyaWZpZWQiLCJlbXBsb3ltZW50IjoiIiwiYmxvY2tlZFVzZXJzIjpbXSwibGVmdENvbnZlcnNhdGlvbnMiOltdLCJfaWQiOiI2MGU1YjcyNGVmYjgzOTNiMmViY2VmOGQiLCJ1c2VybmFtZSI6ImphY3F1ZXMyMiIsImZpcnN0TmFtZSI6IkphY3F1ZXMiLCJsYXN0TmFtZSI6IkFiZXJuYXRoeSIsIm9yaWVudGF0aW9uIjoiU3RyYWlnaHQgKG1hbGUpIiwiYmlydGhkYXkiOiIyMDcxLTA1LTIyVDExOjI3OjEyLjkwOVoiLCJfX3YiOjAsImlhdCI6MTYyNTY2NzM2NH0.KKqiqgxP_sj9Rap_NDX7BGo7Q8KnhMoOvYMeVHY8g1I')
+
+  const redirect = (username) => {
+          location.href = './chatbox.html#' + username;
+        }
+        (function(){
+            // Connect to socket.io
+            var socket = io(WS_URL);
+            // Check for connection
+            if(socket !== undefined){
+                console.log('Connected to socket...');
+                // Handle Output
+                socket.emit('viewAllUsers', localStorage.getItem('user_id'));
+                socket.on('showAllUsers', function(data) {
+                  data.map(user => {
+                    time = new Date(user.timeSent)
+                    time = time.toString().split(' ')[4].split(':').slice(0,2);
+                    time[0] = time[0] > 12 ? time[0]-12 : time[0];
+                    ext = time[0] > 12 ? 'PM' : 'AM';
+                    time[0] = time[0] === '00' ? '12' : time[0];
+                    ext = time[0] === '00' ? 'AM' : 'PM';
+                    time = time.join(':').concat(' ').concat(ext)
+                    document.getElementById('all-users').innerHTML += `
+            <div class="message-item" onclick="redirect('${user._id}')" id="${user._id}">
+                <div class="message-item--div">
+                    <div class="messaged-user-photo">
+                        <img src="${user.picture.blurredImage}" class="thumbnail">
+                    </div>
+                    <div class="messaged-user">
+                        <h4 class="user-name">${user.username}</h4>
+                        <p class="message">${user.latestMessage}
+                            <p class="time">${time}</p>
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <hr class="dropdown-divider">
+            </div>`
+                  })
+                  console.log(data);
+                })
+
+                socket.on('newMessage', function(data) {
+                  let chat = data.chats[0];
+                  let me = chat.senderId === localStorage.getItem('user_id') ? 'sender' : 'receiver';
+                  let otherUser = me === 'sender' ? 'receiver' : 'sender';
+                  console.log(data)
+                  document.getElementById(data[otherUser]._id)?.remove();
+                  time = new Date(chat.timeSent)
+                  time = time.toString().split(' ')[4].split(':').slice(0,2);
+                  time[0] = time[0] > 12 ? time[0]-12 : time[0];
+                  ext = time[0] > 12 ? 'PM' : 'AM';
+                  time[0] = time[0] === '00' ? '12' : time[0];
+                  ext = time[0] === '00' ? 'AM' : 'PM';
+                  time = time.join(':').concat(' ').concat(ext)
+                  let temp = document.getElementById('all-users').innerHTML;
+                  document.getElementById('all-users').innerHTML = `
+            <div class="message-item" onclick="redirect('${data[otherUser]._id}')" id="${data[otherUser]._id}">
+                <div class="message-item--div">
+                    <div class="messaged-user-photo">
+                        <img src="${data[otherUser].picture.blurredImage}" class="thumbnail">
+                    </div>
+                    <div class="messaged-user">
+                        <h4 class="user-name">${data[otherUser].username}</h4>
+                        <p class="message">${chat.body}
+                            <p class="time">${time}</p>
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <hr class="dropdown-divider">
+            </div>`+temp;
+              });
+            }
+        })();
+</script>
