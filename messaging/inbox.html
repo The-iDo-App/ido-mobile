@@ -79,7 +79,7 @@
             <div class="mdc-tab-scroller__scroll-area mdc-tab-scroll-area--scroll" style="overflow-y:hidden; margin-bottom: 0;">
                 <div class="mdc-tab-scroller__scroll-content">
                     <!--Matchmaking-->
-                    <button id="mdc-tab-1" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-1" onclick="location.href='../suggestions.html'" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                             <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/match.png">
@@ -104,7 +104,7 @@
                             </span>
                         </button>
                     <!--Profile-->
-                    <button id="mdc-tab-3" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-3" onclick="location.href='../profile.html'" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                              <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/profile.png">
@@ -117,7 +117,7 @@
                             
                         </button>
                     <!--Settings-->
-                    <button id="mdc-tab-4" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-4" onclick="location.href='../settings/'" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                              <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/settings.png">
@@ -142,7 +142,7 @@
 <script src="../scripts/constants.js"></script>
 <script>
   localStorage.setItem('user_id', '60e5b724efb8393b2ebcef8d');
-  localStorage.getItem('access_token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIxNC4wMDE2MjIzMjg5NzEwNzkiLCJsb25naXR1ZGUiOiIxMjEuNjYwOTUwMTEwOTQwOCJ9LCJtb2JpbGVOdW1iZXIiOiIwOTEyMzQ1Njc4OSIsImZhY2Vib29rSWQiOiIiLCJnbWFpbCI6IiIsInNleCI6IiIsInNob3dBY3RpdmVTdGF0dXMiOnRydWUsImFjdGl2ZVN0YXR1cyI6Im9ubGluZSIsInZlcmlmaWNhdGlvblN0YXR1cyI6InVudmVyaWZpZWQiLCJlbXBsb3ltZW50IjoiIiwiYmxvY2tlZFVzZXJzIjpbXSwibGVmdENvbnZlcnNhdGlvbnMiOltdLCJfaWQiOiI2MGU1YjcyNGVmYjgzOTNiMmViY2VmOGQiLCJ1c2VybmFtZSI6ImphY3F1ZXMyMiIsImZpcnN0TmFtZSI6IkphY3F1ZXMiLCJsYXN0TmFtZSI6IkFiZXJuYXRoeSIsIm9yaWVudGF0aW9uIjoiU3RyYWlnaHQgKG1hbGUpIiwiYmlydGhkYXkiOiIyMDcxLTA1LTIyVDExOjI3OjEyLjkwOVoiLCJfX3YiOjAsImlhdCI6MTYyNTY2NzM2NH0.KKqiqgxP_sj9Rap_NDX7BGo7Q8KnhMoOvYMeVHY8g1I')
+  localStorage.setItem('access_token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiU29tZSBDaXR5IiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIxNC4wMDE2MjIzMjg5NzEwNzkiLCJsb25naXR1ZGUiOiIxMjEuNjYwOTUwMTEwOTQwOCJ9LCJtb2JpbGVOdW1iZXIiOiIwOTEyMzQ1Njc4OSIsImZhY2Vib29rSWQiOiIiLCJnbWFpbCI6IiIsInNleCI6IiIsInNob3dBY3RpdmVTdGF0dXMiOnRydWUsImFjdGl2ZVN0YXR1cyI6Im9ubGluZSIsInZlcmlmaWNhdGlvblN0YXR1cyI6InVudmVyaWZpZWQiLCJlbXBsb3ltZW50IjoiIiwiYmxvY2tlZFVzZXJzIjpbXSwibGVmdENvbnZlcnNhdGlvbnMiOltdLCJfaWQiOiI2MGU1YjcyNGVmYjgzOTNiMmViY2VmOGQiLCJ1c2VybmFtZSI6ImphY3F1ZXMyMiIsImZpcnN0TmFtZSI6IkphY3F1ZXMiLCJsYXN0TmFtZSI6IkFiZXJuYXRoeSIsIm9yaWVudGF0aW9uIjoiU3RyYWlnaHQgKG1hbGUpIiwiYmlydGhkYXkiOiIyMDcxLTA1LTIyVDExOjI3OjEyLjkwOVoiLCJfX3YiOjAsImlhdCI6MTYyNTY2NzM2NH0.KKqiqgxP_sj9Rap_NDX7BGo7Q8KnhMoOvYMeVHY8g1I')
 
   const redirect = (username) => {
           location.href = './chatbox.html#' + username;

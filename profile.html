@@ -147,7 +147,7 @@
             <div class="mdc-tab-scroller__scroll-area mdc-tab-scroll-area--scroll" style="overflow-y:hidden; margin-bottom: 0;">
                 <div class="mdc-tab-scroller__scroll-content">
                     <!--Matchmaking-->
-                    <button id="mdc-tab-1" class="mdc-tab mdc-tab--active mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-1" onclick="location.href='./suggestions.html'" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                             <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/match.png">
@@ -160,7 +160,7 @@
                            
                         </button>
                     <!--Messaging-->
-                    <button id="mdc-tab-2" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-2" onclick="location.href='./messaging/inbox.html'" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                              <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/message.png">
@@ -172,7 +172,7 @@
                             </span>
                         </button>
                     <!--Profile-->
-                    <button id="mdc-tab-3" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-3" class="mdc-tab mdc-tab--active mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                              <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/profile.png">
@@ -185,7 +185,7 @@
                             
                         </button>
                     <!--Settings-->
-                    <button id="mdc-tab-4" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
+                    <button id="mdc-tab-4" onclick="location.href='./settings/'" class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="true" tabindex="0">
                              <span class="mdc-tab__content">
                                 <span class="mdc-tab__icon" aria-hidden="true">
                                     <img src="../icons/settings.png">
@@ -257,8 +257,6 @@
 </html>
 <script src="./scripts/constants.js"></script>
 <script>
-    localStorage.setItem('access_token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiIiLCJjaXR5IjoiIiwicHJvdmluY2UiOiIiLCJjb3VudHJ5IjoiIiwibGF0aXR1ZGUiOiIiLCJsb25naXR1ZGUiOiIifSwibW9iaWxlTnVtYmVyIjoiMDkxMjM0NTY3ODkiLCJmYWNlYm9va0lkIjoiIiwiZ21haWwiOiIiLCJzZXgiOiIiLCJzaG93QWN0aXZlU3RhdHVzIjp0cnVlLCJhY3RpdmVTdGF0dXMiOiJvbmxpbmUiLCJ2ZXJpZmljYXRpb25TdGF0dXMiOiJ1bnZlcmlmaWVkIiwiZW1wbG95bWVudCI6IiIsImJsb2NrZWRVc2VycyI6W10sImxlZnRDb252ZXJzYXRpb25zIjpbXSwiX2lkIjoiNjBkYWNjOGY3Mjc3NzEyM2EwMzJmZTRiIiwidXNlcm5hbWUiOiJoZWxlbmEwOCIsImZpcnN0TmFtZSI6IkhlbGVuYSIsImxhc3ROYW1lIjoiR2xvdmVyIiwib3JpZW50YXRpb24iOiJTdHJhaWdodCAobWFsZSkiLCJiaXJ0aGRheSI6IjIwNTQtMTEtMDdUMjI6Mzc6MDkuODM1WiIsIl9fdiI6MCwiaWF0IjoxNjI0OTUxOTUxfQ.teI4h5mGj8xNCLOdaYuaLNTSZsJsNnmpBtIP4B0O8os');
-    localStorage.setItem("user_id", "60dacc8f72777123a032fe4b");
     let user_id = localStorage.getItem('user_id');
     let access_token = localStorage.getItem('access_token');
     window.addEventListener('load', function() {
