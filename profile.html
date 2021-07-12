@@ -116,25 +116,13 @@
                             Write something about yourself...
                         </span>
                     </div>
-
-
-
                 </div>
             </div>
             <!--end of second col-12 is the user's bio div-->
             <!--start second col-12 is the user's interests-->
             <div class="col-12 p-0 interest">
-                <div class="container interest">
+                <div class="container interest mb-5" id="interests">
                     <h4 class="back"><span class="bio-title">Interests</span></h4>
-                    <!--Interest sample: Books-->
-                    <div class="interest-div">
-                        <h5 class="interest-category">Books</h5>
-                        <div class="badges-interest">
-                            <span class="badge rounded-pill ">Mystery</span>
-                            <span class="badge rounded-pill ">Thriller</span>
-                            <span class="badge rounded-pill ">Fantasy</span>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!--end of second col-12 is the user's bio div-->
@@ -226,7 +214,7 @@
                         <input type="file" id="uploadPic" />
                         <br>
                         <hr class="dropdown-divider" style="position: relative; top: 30px;">
-                        <input type="submit" value="Save Changes" data-bs-dismiss="modal" class="btn save-changes" />
+                        <input type="submit" id="save-pic" value="Save Changes" data-bs-dismiss="modal" class="btn save-changes" />
                     </form>
                 </div>
             </div>
@@ -246,7 +234,7 @@
                     <!--bio form-->
                     <form id="bio-form" class="bio-form">
                         <textarea type="text" id="bio" class="edit-bio-input shadow-none"></textarea>
-                        <input type="submit" value="Save Changes" data-bs-dismiss="modal" class="btn save-changes" />
+                        <input id="save-bio" type="submit" value="Save Changes" data-bs-dismiss="modal" class="btn save-changes" />
                     </form>
                 </div>
             </div>
@@ -268,6 +256,11 @@
             })
             .then((res) => res.json())
             .then((res) => {
+                user = JSON.parse(atob(localStorage.getItem('access_token').split('.')[1]));
+                document.querySelector('.users-name').innerText =
+                    user.firstName + ' ' + user.lastName;
+                document.querySelector('.users-city').innerText =
+                    user.address.city;
                 document.querySelector('#bio-area').innerText =
                     res.user.shortDescription;
                 document
@@ -276,10 +269,71 @@
                 document
                     .querySelector('#viewer')
                     .setAttribute('src', res.user.picture.originalImage);
+              let fields = [
+                'astrologicalSign',
+                'religion',
+                'politicalView',
+                'smoke',
+                'wantKids',
+                'wantMarried',
+                'sports',
+                'hobbies',
+                'musicGenre',
+                'movieGenre',
+                'pets',
+                'books',
+                'food',
+                'drinks',
+              ];
+              let names = {
+                astrologicalSign: 'Astrological Sign',
+                religion: 'Religion',
+                politicalView: 'Political View',
+                smoke: 'Smoke',
+                wantKids: 'Want to Have Kids',
+                wantMarried: 'Want to be Married',
+                sports: 'Sports',
+                hobbies: 'Hobbies',
+                musicGenre: 'Music Genres',
+                movieGenre: 'Movies and TV Genres',
+                pets: 'Pets',
+                books: 'Books',
+                food: 'Food',
+                drinks: 'Drinks',
+              };
+              let el = document.querySelector('#interests')
+              let data = `<div class="interest-div mb-3">`
+              for (let i = 0; i < fields.length; i++) {
+                let value = res.interest[fields[i]];
+                value = typeof value !== 'object' ? [value] : value;
+                data += `<h5 class="interest-category">${names[fields[i]]}</h5>`;
+                for (let j = 0; j < value.length; j++) {
+                  data += `<span class="badge rounded-pill">${value[j]}</span>`;
+                }
+              }
+              data += '</div>';
+              el.innerHTML += data;
             });
     });
 
     document
+        .getElementById('save-pic')
+        .addEventListener('click', (e) => {
+            var input = document.querySelector('input[type="file"]');
+            var data = new FormData();
+            data.append('file', input.files[0]);
+            fetch(API_URL + 'api/profiles/' + user_id, {
+                method: 'POST',
+                headers: {
+                    authorization: access_token
+                },
+                body: data,
+            }).then(res => res.json()).then(res => {
+              document.querySelector('#profile-picture').setAttribute('src', res.user.picture.originalImage)
+            })
+        });
+
+    /*document
         .getElementById('profile-picture-form')
         .addEventListener('submit', (e) => {
             e.preventDefault();
@@ -294,9 +348,41 @@
                 },
                 body: data,
             });
-        });
+        });*/
 
-    document.getElementById('bio-form').addEventListener('submit', (e) => {
+document.getElementById('save-bio').addEventListener('click', (e) => {
+  let bio = document.querySelector('#bio').value;
+  fetch(API_URL + 'api/profiles/' + user_id, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: access_token,
+    },
+    body: JSON.stringify({
+      bio
+    }),
+  }).then((res) => res.json()).then((res) => {
+    console.log(res)
+    if (res.success) document.querySelector('#bio-area').innerText = bio;
+  });
+})
+
+const readURL = (input) => {
+  if (input.files && input.files[0]) {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      document.querySelector("#viewer").setAttribute('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+document.querySelector("#uploadPic").addEventListener('change', () => {
+  readURL(document.querySelector("#uploadPic"));
+});
+
+
+    /*document.getElementById('bio-form').addEventListener('submit', (e) => {
         e.preventDefault();
         let bio = document.querySelector('#bio').value;
 
@@ -310,6 +396,6 @@
                 bio
             }),
         });
-    });
+    });*/
     new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
 </script>
