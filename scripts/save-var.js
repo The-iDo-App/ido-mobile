@@ -299,7 +299,6 @@ function savePreference2() {
         localStorage.setItem('drinks', drinks);
 
         saveToDb();
-        location.href = './questions.html';
     });
 
 }
@@ -393,5 +392,6 @@ async function saveToDb() {
     localStorage.setItem('access_token', access_token);
     localStorage.setItem('user_id', data.user_id);
     console.log(data);
+    location.href = './questions.html';
     return data;
 }
