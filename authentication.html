@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="740301413940-qkcmcsfrjjfrtva0fld85ondk4r9poat.apps.googleusercontent.com">
+    <script src="./scripts/fbs.js"></script>
+    <script src="./scripts/ggs.js"></script>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--font awesome script-->
     <script src="https://kit.fontawesome.com/bcbd543404.js" crossorigin="anonymous"></script>
@@ -30,6 +36,44 @@
         }
     </style>
 </head>
+
+
+<style type="text/css">
+    #customBtn {
+        border-radius: 50%;
+        background-color: white;
+        font-size: 25px;
+        width: 60px;
+        height: 60px;
+        margin: auto;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #1381a2;
+        outline: none;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    #customBtn:hover {
+        cursor: pointer;
+    }
+    
+    span.label {
+        font-family: serif;
+        font-weight: normal;
+    }
+    
+    span.buttonText {
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 10px;
+        padding-left: 20px;
+        font-size: 25px;
+        font-weight: bold;
+        /* Use the Roboto font that is loaded in the <head> */
+        font-family: 'Roboto', sans-serif;
+    }
+</style>
 
 <body>
     <div class="container">
@@ -75,12 +119,24 @@
             <div class="col-3"></div>
             <div class="col-3">
                 <!--onclick na ba to? para iredirect sa Oauth ni fb?-->
-                <button class="btn fb shadow-none">f</button>
+                <button class="btn fb shadow-none" onclick="log()" style="font-weight: bold;font-size:30px;">f</button>
             </div>
             <div class="col-3">
-                <!--onclick na ba to? para iredirect sa Oauth ni google?-->
-                <button class="btn google shadow-none">G</button>
+                <div id="gSignInWrapper">
+                    <div id="customBtn" class="customGPlusSignIn">
+                        <span class="icon"></span>
+                        <span class="buttonText">G</span>
+                    </div>
+                </div>
+                <script>
+                    startApp();
+                </script>
             </div>
+
+
+            <!-- Load the JS SDK asynchronously -->
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
             <div class="col-3"></div>
         </div>
     </div>

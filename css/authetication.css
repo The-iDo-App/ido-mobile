@@ -79,7 +79,7 @@ body:before {
 
 .fb,
 .google {
-    border-radius: 50%;
+    border-radius: 100%;
     background-color: white;
     font-size: 25px;
     width: 60px;
