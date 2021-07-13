@@ -93,7 +93,6 @@ if (document.getElementById('form4') != null) {
 
 function getAddress() {
     var reverseGeocoder = new BDCReverseGeocode();
-
     reverseGeocoder.getClientLocation((result) => {
         const postalCode = result.localityInfo.informative[9].name;
         const city = result.localityInfo.administrative[4].name;
@@ -127,22 +126,24 @@ if (document.getElementById('form5') != null) {
 }
 
 
-function saveStep6() {
-    var but = document.getElementById('step6');
-    but.addEventListener("click", (e) => {
+if (document.getElementById('form6') != null) {
+    var form = document.getElementById('form6');
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        var employment;
-        var item = document.getElementsByName('employment');
-        for (var i = 0; i < item.length; i++) {
-            if (item[i].attributes[2].value == 'true')
-                employment = item[i].innerText;
+        isValid = form.checkValidity();
+        console.log(isValid);
+        form.reportValidity();
+        if (isValid) {
+            var employment;
+            var item = document.getElementsByName('employment');
+            for (var i = 0; i < item.length; i++) {
+                if (item[i].attributes[2].value == 'true')
+                    employment = item[i].innerText;
+            }
+            localStorage.setItem('employment', employment);
+            location.href = './preferences.html'
         }
-        console.log(employment);
-        localStorage.setItem('employment', employment);
-        // saveToUserDb();
-        location.href = './preferences.html'
     });
-
 }
 
 function savePreference() {
@@ -194,6 +195,7 @@ function savePreference1() {
             if (item2[i].attributes[2].value == 'true')
                 politicalView = item2[i].innerText.trim();
         }
+        console.log(politicalView);
 
         var smoke;
         var item4 = document.getElementsByName('smoke');
@@ -283,7 +285,7 @@ function savePreference2() {
         var drinks = "";
         var item8 = document.getElementsByName('drinks');
         for (var i = 0; i < item8.length; i++) {
-            if (item8[i].attributes[2].value == 'true')
+            if (item8[i].attributes[2].value == 'true' || item8[i].ariaChecked == 'true')
                 drinks += item8[i].firstElementChild.innerText + ",";
         }
 
@@ -300,6 +302,20 @@ function savePreference2() {
         location.href = './questions.html';
     });
 
+}
+
+function saveQuestions() {
+    // const questions = document.getElementsByName('questions')[0].childNodes;
+    // // console.log(questions);
+    // for (var i = 0; i < questions.length; i++) {
+    //     if (questions[i].className == 'question') {
+    //         console.log(questions[i].innerText)
+    //     }
+    // }
+
+
+
+    // console.log(questions)
 }
 
 async function saveToDb() {
@@ -373,6 +389,9 @@ async function saveToDb() {
         })
     });
     const data = await response.json();
+    const access_token = data.access_token;
+    localStorage.setItem('access_token', access_token);
+    localStorage.setItem('user_id', data.user_id);
     console.log(data);
     return data;
 }

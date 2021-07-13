@@ -5,6 +5,9 @@
     <!--interests-->
 
     <head>
+        <!--saving inputs-->
+        <script src="../scripts/save-var.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -82,7 +85,7 @@
                         <h3 class="title">Which one are you?</h3>
                         <p class="subtitle">Choose only one answer to each question</p>
                     </div>
-                    <div class="group">
+                    <div class="group" name="questions" id="ques">
                         <!--Question 1-->
                         <label class="question">1. How would you best describe your character?</label>
                         <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
@@ -117,75 +120,13 @@
                                 </span>
                             </div>
                         </div>
-                        <!--Question 2-->
-                        <br>
-                        <label class="question">2. What are the most important characteristics you look for in a partner?</label>
-                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Good looks and style</span>
-                                </span>
-                                </span>
-                            </div>
-
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Loyal, kind, trustworthy</span>
-                                </span>
-                                </span>
-                            </div>
-
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Sense of fun, love of life</span>
-                                </span>
-                                </span>
-                            </div>
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Dynamic, successful</span>
-                                </span>
-                                </span>
-                            </div>
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Passionate and adventurous</span>
-                                </span>
-                                </span>
-                            </div>
-                        </div>
-                        <br>
-                        <!--Question 3-->
-                        <label class="question">3. Morning person? or Night owl?</label>
-                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Morning person</span>
-                                </span>
-                                </span>
-                            </div>
-
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Night owl</span>
-                                </span>
-                                </span>
-                            </div>
-
-                        </div>
                     </div>
-                    <button role="button" class="btn nxt shadow-none">Save</button> </div>
+                    <br>
+                </div>
+                <button role="button" class="btn nxt shadow-none" onMouseUp="">Save</button> </div>
                 </div>
 
-
-
+                <script src="../scripts/show-questions.js"></script>
                 <script>
                     //chips: choices each question
                     let elements = document.getElementsByClassName('mdc-chip-set');

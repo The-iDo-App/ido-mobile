@@ -83,7 +83,6 @@
     </style>
 
     <body>
-
         <header>
             <div class="box">
                 <img class="logo" src="../icons/Logo-whitebg.png">
@@ -95,14 +94,14 @@
             <h2 class="title">Let's set you up an account!</h2>
             <p class="subtitle">Upload your photo or select with the available avatars.</p>
             <!--Registration form step one:
-        1. Upload photo or pick an avatar
-        2. Fill up name and nickname
-        -->
+            1. Upload photo or pick an avatar
+            2. Fill up name and nickname
+            -->
             <div class="photo-and-button">
                 <!--Profile pic circle-->
                 <div class="profilePic-box">
                     <!--Profile pic img or avatar-->
-                    <img class="profilePic" id="profilePic" src="../avatars/Asset 156.png">
+                    <img class="profilePic" id="profilePic" src="../avatars/Asset 156.png" style="position:absolute; left:-10px; top:10px;height:110%;">
                 </div>
 
                 <!--trigger button to open modal-->
@@ -152,66 +151,8 @@
                 </div>
                 <div class="modal-body ">
                     <!--gallery-->
-                    <div class="container">
-                        <div class="gallery">
-                            <a href="#" class="link-gallery">
-                                <img src="../icons/gallery.png" class="img-thumbnail photo-gallery" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 156.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 157.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 158.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 159.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 160.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 161.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 162.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 163.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 164.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 165.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 166.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 167.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 168.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 169.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 170.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 171.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 172.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-                            <a href="#" class="link-pic">
-                                <img src="../avatars/Asset 173.png" class="img-thumbnail pic" style="object-fit: contain;">
-                            </a>
-
+                    <div class="container" id="bbb">
+                        <div class="gallery" id="avatar-gallery">
                         </div>
                     </div>
                 </div>
@@ -227,18 +168,8 @@
 
 variable js-->
 
+        <script src="../scripts/show-avatars.js"></script>
         <script>
-            let avatar;
-            this.saveBtn.addEventListener('click', function() {
-                document.getElementById('profilePic').setAttribute('src', avatar);
-            })
-            var avatars = document.getElementsByClassName('pic');
-            [...avatars].map(e => {
-                e.addEventListener('click', function() {
-                    avatar = e.src;
-                })
-            })
-
             let elements = document.getElementsByClassName('mdc-text-field');
             [...elements].map((e) => {
                 new mdc.textField.MDCTextField(e);

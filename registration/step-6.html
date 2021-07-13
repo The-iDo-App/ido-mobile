@@ -4,9 +4,6 @@
     <!--gender man or woman-->
 
     <head>
-        <!--saving inputs-->
-        <script src="../scripts/save-var.js"></script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
 
@@ -92,64 +89,66 @@
         <a href="step-5.html" class="link-page">
             << Back </a>
                 <br>
-                <div class="container">
-                    <div class="top-header">
-                        <h2 class="title">I am currently</h3>
-                            <p class="subtitle">Choose your employment status</p>
-                    </div>
-                    <br>
-                    <div class="group">
-                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
+                <form id="form6">
+                    <div class="container">
+                        <div class="top-header">
+                            <h2 class="title">I am currently</h3>
+                                <p class="subtitle">Choose your employment status</p>
+                        </div>
+                        <br>
+                        <div class="group">
+                            <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
 
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
+                                <div class="mdc-chip" role="row">
+                                    <span role="gridcell">
                              <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="employment">
                             <span class="mdc-chip__text">Employed</span>
-                                </span>
-                                </span>
-                            </div>
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
+                                    </span>
+                                    </span>
+                                </div>
+                                <div class="mdc-chip" role="row">
+                                    <span role="gridcell">
                             <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="employment">
                              <span class="mdc-chip__text">Unemployed</span>
-                                </span>
-                                </span>
-                            </div>
-                            <div class="mdc-chip" role="row">
-                                <span role="gridcell">
+                                    </span>
+                                    </span>
+                                </div>
+                                <div class="mdc-chip" role="row">
+                                    <span role="gridcell">
                             <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" name="employment">
                              <span class="mdc-chip__text">Student</span>
-                                </span>
-                                </span>
+                                    </span>
+                                    </span>
+                                </div>
+                                <br>
                             </div>
-                            <br>
-                        </div>
 
-                        <!--terms and conditions-->
-                        <div class="terms-and-conditions">
-                            <div class="mdc-touch-target-wrapper">
-                                <div class="mdc-checkbox mdc-checkbox--touch">
-                                    <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />
-                                    <div class="mdc-checkbox__background">
-                                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <!--terms and conditions-->
+                            <div class="terms-and-conditions">
+                                <div class="mdc-touch-target-wrapper">
+                                    <div class="mdc-checkbox mdc-checkbox--touch">
+                                        <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" required/>
+                                        <div class="mdc-checkbox__background">
+                                            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                                             <path class="mdc-checkbox__checkmark-path"
                                                 fill="none"
                                                 d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
                                 </svg>
-                                        <div class="mdc-checkbox__mixedmark"></div>
+                                            <div class="mdc-checkbox__mixedmark"></div>
+                                        </div>
+                                        <div class="mdc-checkbox__ripple"></div>
                                     </div>
-                                    <div class="mdc-checkbox__ripple"></div>
                                 </div>
+                                <p class="terms">I agree to terms and conditions</p>
                             </div>
-                            <p class="terms">I agree to terms and conditions</p>
+
                         </div>
 
+                        <button class="btn nxt shadow-none" type="submit">Next</button>
                     </div>
-
-
-                    <button role="button" class="btn nxt shadow-none" onMouseUp="saveStep6()" id="step6">Next</button> </div>
-                </div>
-
+                    </div>
+                </form>
+                <script src="../scripts/save-var.js"></script>
                 <script>
                     //chips: employment status
                     new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
