@@ -1,6 +1,7 @@
 fetch('http://localhost:5000/api/avatars').then(res => res.json())
     .then(res => {
         let avatarURL
+        console.log(res);
         const avatarGallery = document.getElementById('avatar-gallery');
         for (var i = 0; i < res.avatars.length; i++) {
             avatarURL = res.avatars[i].picture;

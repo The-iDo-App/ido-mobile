@@ -305,17 +305,14 @@ function savePreference2() {
 }
 
 function saveQuestions() {
-    // const questions = document.getElementsByName('questions')[0].childNodes;
-    // // console.log(questions);
+    const questions = document.getElementsByName('questions');
+    console.log(questions);
     // for (var i = 0; i < questions.length; i++) {
     //     if (questions[i].className == 'question') {
     //         console.log(questions[i].innerText)
     //     }
     // }
-
-
-
-    // console.log(questions)
+    location.href = '../suggestions.html';
 }
 
 async function saveToDb() {

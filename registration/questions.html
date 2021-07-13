@@ -5,8 +5,9 @@
     <!--interests-->
 
     <head>
-        <!--saving inputs-->
+        <!-- save var -->
         <script src="../scripts/save-var.js"></script>
+        <!-- <script src="../scripts/show-questions.js"></script> -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!--font awesome script-->
@@ -31,7 +32,7 @@
     <style>
         .container {
             width: 320px;
-            height: 800px;
+            height: auto;
             position: relative;
             top: 65px;
             margin-bottom: 200px;
@@ -85,14 +86,14 @@
                         <h3 class="title">Which one are you?</h3>
                         <p class="subtitle">Choose only one answer to each question</p>
                     </div>
-                    <div class="group" name="questions" id="ques">
+                    <div class="group">
                         <!--Question 1-->
-                        <label class="question">1. How would you best describe your character?</label>
-                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid">
+                        <label class="question">1. How long do you anticipate your next relationship lasting?</label>
+                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid" name="questions">
                             <div class="mdc-chip" role="row">
                                 <span role="gridcell">
                                 <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Shy and reserved</span>
+                                <span class="mdc-chip__text">For one night</span>
                                 </span>
                                 </span>
                             </div>
@@ -100,7 +101,7 @@
                             <div class="mdc-chip" role="row">
                                 <span role="gridcell">
                                 <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Expressive, open and chatty</span>
+                                <span class="mdc-chip__text">For several months to a year</span>
                                 </span>
                                 </span>
                             </div>
@@ -108,25 +109,154 @@
                             <div class="mdc-chip" role="row">
                                 <span role="gridcell">
                                 <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Humorous</span>
+                                <span class="mdc-chip__text">For several years</span>
                                 </span>
                                 </span>
                             </div>
                             <div class="mdc-chip" role="row">
                                 <span role="gridcell">
                                 <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                <span class="mdc-chip__text">Easy going</span>
+                                <span class="mdc-chip__text">For the entire rest of my life</span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <!--Question 2-->
+                        <br>
+                        <label class="question">2. What role does religion/God play in your life?</label>
+                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid" name="questions">
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action" >
+                                <span class="mdc-chip__text">Extremely important</span>
+                                </span>
+                                </span>
+                            </div>
+
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Somewhat important</span>
+                                </span>
+                                </span>
+                            </div>
+
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Not very important</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Not important at all</span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--Question 3-->
+                        <br>
+                        <label class="question">3. Are you prepared to settle down and marry immediately?</label>
+                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid" name="questions">
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Without a doubt</span>
+                                </span>
+                                </span>
+                            </div>
+
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">In no way</span>
+                                </span>
+                                </span>
+                            </div>
+
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Marry yes, settle down no</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Marry no, settle down yes</span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <br>
+                        <!--Question 4-->
+                        <label class="question">4. Do you believe it is necessary to establish an emotional connection before establishing a physical one?</label>
+                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid" name="questions">
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Yes</span>
+                                </span>
+                                </span>
+                            </div>
+
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">No</span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--Question 5-->
+                        <br>
+                        <label class="question">5. Would you tell someone you've never met "I love you"?</label>
+                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid" name="questions">
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Certainly, if it felt right.</span>
+                                </span>
+                                </span>
+                            </div>
+
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">No, I require a physical connection first.</span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <br>
+                        <label class="question">6. Whatever your future plans, what interests you more right now?</label>
+                        <div class="mdc-chip-set mdc-chip-set--choice" role="grid" name="questions">
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Sex</span>
+                                </span>
+                                </span>
+                            </div>
+
+                            <div class="mdc-chip" role="row">
+                                <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                <span class="mdc-chip__text">Love</span>
                                 </span>
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <br>
-                </div>
-                <button role="button" class="btn nxt shadow-none" onMouseUp="">Save</button> </div>
+                    <button role="button" class="btn nxt shadow-none" onMouseUp="saveQuestions()">Save</button>
                 </div>
 
-                <script src="../scripts/show-questions.js"></script>
+                <!-- <script src="../scripts/show-questions.js"></script> -->
                 <script>
                     //chips: choices each question
                     let elements = document.getElementsByClassName('mdc-chip-set');
